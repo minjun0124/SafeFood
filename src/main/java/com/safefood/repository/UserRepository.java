@@ -17,7 +17,7 @@ public class UserRepository {
         return user.getId();
     }
 
-     public User findOne(Long id){
+    public User findOne(Long id){
         return em.find(User.class, id);
     }
 }

@@ -21,7 +21,7 @@ public class UserTest {
     UserRepository userRepository;
 
     @Test
-    @Rollback(value = false)
+//    @Rollback(value = false)
     public void 회원가입() throws Exception{
         //given
         User user = new User();
