@@ -18,11 +18,16 @@ public class Cart {
     @NonNull
     private Long id;
 
+    @NonNull
+    private int Quantity;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @NonNull
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "food_code")
     @NonNull
-    private int Quantity;
+    private Food food;
 }

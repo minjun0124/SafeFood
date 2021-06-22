@@ -35,22 +35,20 @@ public class User {
     // Allergy 어떻게 넣을 건지?
     private String allergy;
 
-    @NonNull
     private boolean withdraw = false;
 
-    @NonNull
     private String grade = "member";
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Cart> carts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "intake", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Intake> intakes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "notice", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Notice> notices = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
 }
