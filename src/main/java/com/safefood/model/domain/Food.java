@@ -26,6 +26,7 @@ public class Food {
     private double sugar;
     private double sodium;
     private double cholesterol;
+    private double fattyAcid;
     private double transFat;
     private String maker;
     private String material;

@@ -51,4 +51,26 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
+
+    //=============Business Logic ============//
+
+    public boolean getWithdrawStatus() {
+        return this.withdraw;
+    }
+
+    public void setWithdrawStatus(boolean status) {
+        this.withdraw = status;
+    }
+
+    public boolean isLogin(String id, String pw) {
+        return this.getPassword().equals(pw) && this.getWithdrawStatus();
+    }
+
+    public void userUpdate(String city, String street, String zip
+            , String allergy, String phone) {
+        Address address = new Address(city, street, zip);
+        this.setAddress(address);
+        this.setAllergy(allergy);
+        this.setPhone(phone);
+    }
 }
