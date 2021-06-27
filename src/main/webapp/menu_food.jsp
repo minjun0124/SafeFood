@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.ssafy.vo.User"%>
+<%@ page import="java.util.ArrayList, com.safefood.model.domain.User"%>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -114,7 +114,7 @@
 				</h2>
 				<p>건강한 삶을 위한 먹거리 프로젝트</p>
 				<div>
-					<jsp:useBean id="bean" class="com.ssafy.vo.PageBean"
+					<jsp:useBean id="bean" class="com.safefood.model.domain.PageBean"
 						scope="request" />
 					<form  method="get" id="searchFood" >
 						<input type="hidden" id="pageNo" name="pageNo" value=${bean.pageNo }>
@@ -200,52 +200,52 @@
 								<fieldset class="form-group">
 									<div class="btn-group-justified" data-toggle="buttons">
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="대두">대두
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox1' value="대두">대두
 										</label>
 										<label class="btn btn-default">
 											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="땅콩">땅콩
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="우유">우유
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox3' value="우유">우유
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="게">게
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox4' value="게">게
 										</label>
 									</div>	
 									<div class="btn-group-justified" data-toggle="buttons">
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="새우">새우
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox5' value="새우">새우
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="참치">참치
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox6' value="참치">참치
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="연어">연어
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox7' value="연어">연어
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="쑥">쑥
-										</label>
-									</div>
-									<div class="btn-group-justified" data-toggle="buttons">
-										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="소고기">소고기
-										</label>
-										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="닭고기">닭고기
-										</label>
-										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="돼지고기">돼지고기
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox8' value="쑥">쑥
 										</label>
 									</div>
 									<div class="btn-group-justified" data-toggle="buttons">
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="복숭아">복숭아
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox9' value="소고기">소고기
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="민들레">민들레
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox10' value="닭고기">닭고기
 										</label>
 										<label class="btn btn-default">
-											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox2' value="계란흰자">계란흰자
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox11' value="돼지고기">돼지고기
+										</label>
+									</div>
+									<div class="btn-group-justified" data-toggle="buttons">
+										<label class="btn btn-default">
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox12' value="복숭아">복숭아
+										</label>
+										<label class="btn btn-default">
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox13' value="민들레">민들레
+										</label>
+										<label class="btn btn-default">
+											<input type="checkbox" autocomplete="off" name="allergy" id='inlineCheckbox14' value="계란흰자">계란흰자
 										</label>
 									</div>
 								</fieldset>

@@ -13,12 +13,12 @@ public class UserRepository {
 
     private final EntityManager em;
 
-    public Long save(User user) {
+    public String save(User user) {
         em.persist(user);
         return user.getId();
     }
 
-    public User findOne(Long id){
+    public User findById(String id){
         return em.find(User.class, id);
     }
 

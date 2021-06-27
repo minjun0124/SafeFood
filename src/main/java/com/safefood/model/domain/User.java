@@ -14,10 +14,9 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
     @Column(name = "user_id")
     @NonNull
-    private Long id;
+    private String id;
 
     @NonNull
     private String password;
@@ -39,17 +38,29 @@ public class User {
 
     private String grade = "member";
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Cart> carts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Intake> intakes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Notice> notices = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Question> questions = new ArrayList<>();
+
+    public User(String userId, String pw, String name, Address address, String phone) {
+        this.id = userId;
+        this.password = pw;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public User() {
+
+    }
 
 
     //=============Business Logic ============//

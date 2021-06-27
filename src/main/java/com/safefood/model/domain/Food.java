@@ -34,10 +34,10 @@ public class Food {
     private String allergy;
     private int searchCnt;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
     private List<Intake> intakes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
     private List<Cart> carts = new ArrayList<>();
 
 }

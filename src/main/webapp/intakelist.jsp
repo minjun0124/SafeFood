@@ -95,7 +95,7 @@
 	</div>
 	<section class="main-container">
 		<div class="container " style="text-align: center;">
-			<jsp:useBean id="pagebean" class="com.ssafy.vo.PageBean" scope="request"></jsp:useBean>
+			<jsp:useBean id="pagebean" class="com.safefood.model.domain.PageBean" scope="request"></jsp:useBean>
 			<form action="intakelist.do" method="get" id="searchForm">
 				<table style="width: 100%; " class="center">
 				<tbody style="width: 100%; ">

@@ -151,12 +151,12 @@
 									<div class="col-lg-4 col-md-6 isotope-item app-development">
 										<div class="image-box hc-shadow-2 text-center mb-20">
 											<div class="overlay-container">
-												<img src=${food.img } class="center" id="prodImg0">
+												<img src=${food.img } class="center" id="prodImg1">
 												<div class="overlay-top"></div>
 												<div class="overlay-bottom">
 													<div class="links">
 														<a class="btn btn-gray-transparent btn-animated btn-sm"
-															id="info0" href="foodview.do?code=${food.code }">상품
+															id="info1" href="foodview.do?code=${food.code }">상품
 															정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 														</a>
 													</div>
