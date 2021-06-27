@@ -32,9 +32,4 @@ public class UserRepository {
         em.remove(user);
     }
 
-    public void withdraw(String id) {
-        User user = em.find(User.class, id);
-        user.setWithdrawStatus(true);
-    }
-
 }

@@ -4,6 +4,7 @@ import com.safefood.dto.UserDto;
 import com.safefood.model.domain.User;
 import com.safefood.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserRepository userRepository;
@@ -26,7 +28,7 @@ public class UserService {
 
     private void validateDuplicateUser(User user) {
         Optional<User> opUser = Optional.ofNullable(this.findById(user.getId()));
-        if(opUser.isPresent()){
+        if (opUser.isPresent()) {
             throw new IllegalStateException("이미 존재하는 회원입니다");
         }
     }
@@ -41,13 +43,17 @@ public class UserService {
 
     public boolean loginPass(String userId, String pw) {
         Optional<User> opUser = Optional.ofNullable(this.findById(userId));
-        if(opUser.isEmpty()){
+        if (opUser.isEmpty()) {
             throw new IllegalStateException("존재하지 않는 회원입니다");
         }
         User user = opUser.get();
-        return user.getPassword().equals(pw) && !user.getWithdrawStatus();
+        log.info("user withdraw : " + user.getWithdraw());
+        log.info("user password : " + user.getPassword());
+        log.info("input password : " + pw);
+        return user.getPassword().equals(pw) && user.getWithdraw() == 'f';
     }
 
+    @Transactional
     public void updateUser(UserDto userDto) {
         User user = this.findById(userDto.getId());
         user.userInfoChange(userDto);
@@ -55,7 +61,7 @@ public class UserService {
 
     public void withdrawUser(String userId) {
         User user = this.findById(userId);
-        user.setWithdrawStatus(true);
+        user.setWithdraw('t');
     }
 
 }

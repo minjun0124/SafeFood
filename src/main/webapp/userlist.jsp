@@ -29,7 +29,7 @@
 					<tr>
 						<td class="tableval">${user.name }</td>
 						<td class="tableval">${user.id }</td>
-						<td class="tableval">${user.phonenum }</td>
+						<td class="tableval">${user.phone }</td>
 						<td class="tableval">
 							<c:choose>
 								<c:when test="${user.withdraw == 116}">

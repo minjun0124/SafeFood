@@ -24,7 +24,7 @@ body {
 		<div align="center">
 			<h1>${msg_psearch }</h1>
 		</div>
-		<form method="post" id="modform" action="modAction.do" role="form"
+		<form method="post" id="modform" action="modAction" role="form"
 			class="form-horizontal">
 			<%-- <div class="form-group">
 				<label class="control-label col-md-3">고객님의 아이디 *: <%=sess_id%></label>
@@ -32,7 +32,7 @@ body {
 			<div class="form-group">
 				<label class="control-label col-md-3">비밀번호 *:</label>
 				<div class="col-md-5">
-					<input type="password" class="form-control" id="mod_pw" name="pw" value=""
+					<input type="password" class="form-control" id="mod_pw" name="password" value=""
 						placeholder="비밀번호를 입력해주세요." required>
 				</div>
 			</div>
@@ -60,14 +60,14 @@ body {
 			<div class="form-group">
 				<label class="control-label col-md-3">주 소 *:</label>
 				<div class="col-md-5">
-					<input type="text" class="form-control" name="addr" value=""
+					<input type="text" class="form-control" name="address" value=""
 						placeholder="주소 입력해주세요." required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-3">전화번호 *:</label>
 				<div class="col-md-5">
-					<input type="text" class="form-control" name="phonenum" value=""
+					<input type="text" class="form-control" name="phone" value=""
 						placeholder="전화번호를 입력해주세요." required>
 				</div>
 			</div>

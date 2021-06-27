@@ -75,7 +75,7 @@
 				if (sess_id != null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li color="white"><a href="memInfo.do"><img alt="멤버이미지"
+				<li color="white"><a href="memInfo"><img alt="멤버이미지"
 						src="img/mem_icon.jpg"></a></li>
 				<li><a href="Logout.do">로그아웃</a></li>
 			</ul>
@@ -114,11 +114,11 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="regist.do" role="form"
+					<form method="post" action="registerUser" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<input type="hidden" id="withdraw" name="withdraw" value="f" />
-							<input type="hidden" id="isadmin" name="isadmin" value="0" />
+							<input type="hidden" id="isAdmin" name="isAdmin" value="0" />
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">아이디</label>
@@ -137,7 +137,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-3">비밀번호</label>
 							<div class="col-md-9">
-								<input type="password" class="form-control" id="pw" name="pw" value=""
+								<input type="password" class="form-control" id="pw" name="password" value=""
 									placeholder="비밀번호를 입력해주세요." required>
 							</div>
 						</div>
@@ -165,14 +165,14 @@
 						<div class="form-group">
 							<label class="control-label col-md-3">주 소</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="addr" value=""
+								<input type="text" class="form-control" name="address" value=""
 									placeholder="주소 입력해주세요." required>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-3">전화번호</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="phonenum" value=""
+								<input type="text" class="form-control" name="phone" value=""
 									placeholder="전화번호를 입력해주세요." required>
 							</div>
 						</div>
@@ -266,7 +266,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row" id='loginfrm'>
-					<form method="post" action="userlogin.do" role="form"
+					<form method="post" action="userlogin" role="form"
 						class="form-horizontal">
 						<div class="row">
 							<label class="control-label col-md-3">아이디</label>
@@ -278,7 +278,7 @@
 						<div class="row">
 							<label class="control-label col-md-3">비밀번호</label>
 							<div class="col-md-8">
-								<input type="password" class="form-control" name="pw" value=""
+								<input type="password" class="form-control" name="password" value=""
 									placeholder="비밀번호를 입력해주세요." required>
 							</div>
 						</div>
@@ -326,7 +326,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-3">전화번호 *:</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" name="phonenum" value=""
+								<input type="text" class="form-control" name="phone" value=""
 									placeholder="'-'을 포함하여 입력해주세요." required>
 							</div>
 						</div>

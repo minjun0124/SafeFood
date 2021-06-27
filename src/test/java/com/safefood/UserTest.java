@@ -34,7 +34,7 @@ public class UserTest {
     public void 회원가입() throws Exception {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
 
         //when
         String savedId = userRepository.save(user);
@@ -47,7 +47,7 @@ public class UserTest {
     public void 회원가입_서비스() {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
 
         //when
         String savedId = userService.join(user);
@@ -60,8 +60,8 @@ public class UserTest {
     public void 회원가입_중복() throws Exception {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
-        User userDuple = new User("test", "asdf", "asdf", address, "01078907890");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
+        User userDuple = new User("test", "asdf", "asdf", "seoul", "01078907890");
 
         //when
         String savedId = userService.join(user);
@@ -75,7 +75,7 @@ public class UserTest {
     public void 로그인() throws Exception {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
         String savedId = userService.join(user);
 
         //when
@@ -89,7 +89,7 @@ public class UserTest {
     public void 로그인_실패() throws Exception {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
 
         //when
         if (!userService.loginPass("asdf", "asdf")) {
@@ -106,12 +106,12 @@ public class UserTest {
         String userName = "test1";
         String userModName = "test2";
         Address address = new Address("seoul", "safe load", "1234");
-        User user1 = new User(userId, "test", userName, address, "01012341234");
+        User user1 = new User(userId, "test", userName, "seoul", "01012341234");
         userService.join(user1);
         assertEquals(user1.getName(), userName);
 
         // when
-        UserDto userDto = new UserDto(userId, userModName, address, "01078907890", "nuts");
+        UserDto userDto = new UserDto(userId, userModName, "seoul", "01078907890", "nuts");
         userService.updateUser(userDto);
 
         // then
@@ -124,7 +124,7 @@ public class UserTest {
     public void 회원탈퇴() {
         //given
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", address, "01012341234");
+        User user = new User("test", "test", "test", "seoul", "01012341234");
         String savedId = userRepository.save(user);
         assertEquals(user, userRepository.findById(savedId));
 

@@ -149,7 +149,7 @@
 					[ '나트륨'	, ${food.natrium}*0.01	],
 					[ '콜레스테롤'	, ${food.chole}		],
 					[ '포화지방산'	, ${food.fattyacid}	],
-					[ '트랜스지방'	, ${food.transfat}	]
+					[ '트랜스지방'	, ${food.transfat}	],
 				]);
 
 		var options = {

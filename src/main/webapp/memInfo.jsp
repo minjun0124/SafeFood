@@ -92,11 +92,11 @@ body {
 				</tr>
 				<tr>
 					<th>주소:</th>
-					<td>${user.addr}</td>
+					<td>${user.address}</td>
 				</tr>
 				<tr>
 					<th>전화번호:</th>
-					<td>${user.phonenum}</td>
+					<td>${user.phone}</td>
 				</tr>
 				<tr>
 					<th>알레르기:</th>
@@ -134,7 +134,7 @@ body {
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<form method="get" action="memMod.do" role="form"
+							<form method="get" action="memMod" role="form"
 								class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label col-md-4">비밀번호 *:</label>
@@ -322,12 +322,12 @@ body {
 			};
 				console.log(query)
 			$.ajax({
-				url : "/SafeFoodSpring/pwcheck.do",
+				url : "/pwcheck",
 				type : "post",
 				data : query,
 				success : function(data) {
 					if (data == 1) {
-						location.href='/SafeFoodSpring/memMod.do';
+						location.href='/memMod';
 					} else {
 						alert("비밀번호가 틀립니다. 다시 시도해주세요.");
 						location.reload();
@@ -343,7 +343,7 @@ body {
 			};
 				console.log(query)
 			$.ajax({
-				url : "/SafeFoodSpring/pwcheck.do",
+				url : "/pwcheck",
 				type : "post" ,
 				data : query,
 				success : function(data) {
