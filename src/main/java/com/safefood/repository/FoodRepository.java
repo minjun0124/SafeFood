@@ -17,7 +17,7 @@ public class FoodRepository {
 
     private final EntityManager em;
 
-    public void loadData(String context) {
+    public void loadData() {
         log.info("loadData start");
         ArrayList<Food> foods = new FoodSaxParser().getFoods();
         List<Food> dbFoods = em.createQuery("select f from Food f", Food.class).getResultList();
@@ -38,7 +38,7 @@ public class FoodRepository {
         em.remove(food);
     }
 
-    public Food findOne(int code) {
+    public Food findByCode(int code) {
         return em.find(Food.class, code);
     }
 

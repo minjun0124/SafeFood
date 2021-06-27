@@ -29,9 +29,6 @@ public class UserTest {
     @Autowired
     UserService userService;
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
-
     @Test
 //    @Rollback(value = false)
     public void 회원가입() throws Exception {

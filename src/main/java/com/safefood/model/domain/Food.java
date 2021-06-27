@@ -14,7 +14,6 @@ import java.util.List;
 public class Food {
 
     @Id
-    @GeneratedValue
     @Column(name = "food_code")
     private int code;
     private String name;
@@ -29,6 +28,7 @@ public class Food {
     private double fattyAcid;
     private double transFat;
     private String maker;
+    @Column(length = 3000)
     private String material;
     private String imgPath;
     private String allergy;
@@ -40,4 +40,18 @@ public class Food {
     @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
     private List<Cart> carts = new ArrayList<>();
 
+    public void setMaterial(String material) {
+        this.material = material;
+        setAllergy();
+    }
+
+    public void setAllergy() {
+        System.out.print("allergy search : ");
+        this.allergy = " ";
+        for (String a : new Allergy().getAllergies()) {
+            if (this.material.contains(a)) {
+                this.allergy += a + " ";
+            }
+        }
+    }
 }

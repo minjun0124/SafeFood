@@ -44,6 +44,7 @@ public class FoodSaxParser {
 			Food find;
 			for (Food food : foods) {
 				find = foodMap.get(food.getName());
+				System.out.println(food.getName());
 				if (find != null) {
 					food.setCode(find.getCode());
 					food.setName(find.getName());
