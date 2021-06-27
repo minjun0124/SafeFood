@@ -1,5 +1,6 @@
 package com.safefood.model.domain;
 
+import com.safefood.dto.UserDto;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -73,15 +74,10 @@ public class User {
         this.withdraw = status;
     }
 
-    public boolean isLogin(String id, String pw) {
-        return this.getPassword().equals(pw) && this.getWithdrawStatus();
-    }
-
-    public void userUpdate(String city, String street, String zip
-            , String allergy, String phone) {
-        Address address = new Address(city, street, zip);
-        this.setAddress(address);
-        this.setAllergy(allergy);
-        this.setPhone(phone);
+    public void userInfoChange(UserDto userDto) {
+        this.setName(userDto.getName());
+        this.setAddress(userDto.getAddress());
+        this.setAllergy(userDto.getAllergy());
+        this.setPhone(userDto.getPhone());
     }
 }
