@@ -134,7 +134,7 @@ body {
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<form method="get" action="memMod" role="form"
+							<form method="get" action="mod" role="form"
 								class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label col-md-4">비밀번호 *:</label>
@@ -188,7 +188,7 @@ body {
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<form method="post" action="memDelete.do" role="form"
+							<form method="post" action="users/withdraw" role="form"
 								class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label col-md-4">비밀번호 *:</label>
@@ -322,12 +322,12 @@ body {
 			};
 				console.log(query)
 			$.ajax({
-				url : "/pwcheck",
+				url : "/users/pwcheck",
 				type : "post",
 				data : query,
 				success : function(data) {
 					if (data == 1) {
-						location.href='/memMod';
+						location.href='/users/mod';
 					} else {
 						alert("비밀번호가 틀립니다. 다시 시도해주세요.");
 						location.reload();
@@ -343,12 +343,12 @@ body {
 			};
 				console.log(query)
 			$.ajax({
-				url : "/pwcheck",
+				url : "/users/pwcheck",
 				type : "post" ,
 				data : query,
 				success : function(data) {
 					if (data == 1) {
-						location.href='/SafeFoodSpring/memDelete.do';
+						location.href='/users/withdraw';
 					} else {
 						alert("비밀번호가 틀립니다. 다시 시도해주세요.");
 						location.reload();

@@ -59,6 +59,7 @@ public class UserService {
         user.userInfoChange(userDto);
     }
 
+    @Transactional
     public void withdrawUser(String userId) {
         User user = this.findById(userId);
         user.setWithdraw('t');

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +18,14 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/registerUser")
+    private HttpSession session;
+
+    @PostMapping("/register")
     private String userRegister(Model model, User user) {
         try {
             System.out.println(user.toString());
@@ -31,10 +35,10 @@ public class UserController {
             e.printStackTrace();
             model.addAttribute("msg", "회원 저장에 실패했습니다.");
         }
-        return "index";
+        return "redirect:/index";
     }
 
-    @PostMapping("/userlogin")
+    @PostMapping("/login")
     private String userLogin(String id, String password, HttpServletRequest req) {
         log.info(id + "/" + password);
         String nextPage = "Error";
@@ -61,7 +65,21 @@ public class UserController {
         return nextPage;
     }
 
-    @GetMapping("/memInfo")
+    @GetMapping("/logout")
+    private String userLogout(HttpServletRequest request) {
+        logout(request);
+        return "index";
+    }
+
+    private void logout(HttpServletRequest request) {
+        session = request.getSession();
+        session.removeAttribute("loginid");
+        session.removeAttribute("isAdmin");
+        session.removeAttribute("userallergy");
+        session.setAttribute("msg", "로그아웃 되었습니다. 다시 로그인 해주세요.");
+    }
+
+    @GetMapping("/info")
     private String userMyPage(HttpServletRequest request) {
         User user;
         String sess_id = (String) request.getSession().getAttribute("loginid");
@@ -72,13 +90,13 @@ public class UserController {
         return "memInfo";
     }
 
-    @GetMapping("/memMod")
+    @GetMapping("/mod")
     private String userMod(HttpServletRequest request) {
         return "memMod";
     }
 
-    @PostMapping("/modAction")
-    private String modAction(UserDto userDto, HttpServletRequest request) {
+    @PostMapping("/update")
+    private String userUpdate(UserDto userDto, HttpServletRequest request) {
         try {
             String id = (String) request.getSession().getAttribute("loginid");
             userDto.setId(id);
@@ -89,7 +107,25 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "memInfo";
+        return "redirect:/users/info";
+    }
+
+    @GetMapping("/withdraw")
+    private String userDelete(HttpServletRequest request) {
+        session = request.getSession();
+        String id = (String) session.getAttribute("loginid");
+        String nextPage = "Error";
+        try {
+            userService.withdrawUser(id);
+            request.setAttribute("msg", "탈퇴가 완료되었습니다.");
+            logout(request);
+            nextPage = "index";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "탈퇴 실패하였습니다.");
+            nextPage = "memInfo";
+        }
+        return nextPage;
     }
 
     @ResponseBody

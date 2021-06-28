@@ -44,7 +44,7 @@
 <br>
 	<div class="container">
 		<div class="collapse navbar-collapse" id="target">
-			<a class="navbar-brand" href="index.do"
+			<a class="navbar-brand" href="/"
 				style="color: #94b8ff; font-size: 30px; font-weight: bold">SSAFY</a>
 			<ul class="nav navbar-nav">
 				<li><a href="foodlist.do">상품정보</a></li>
@@ -75,9 +75,9 @@
 				if (sess_id != null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li color="white"><a href="memInfo"><img alt="멤버이미지"
+				<li color="white"><a href="/users/info"><img alt="멤버이미지"
 						src="img/mem_icon.jpg"></a></li>
-				<li><a href="Logout.do">로그아웃</a></li>
+				<li><a href="/users/logout">로그아웃</a></li>
 			</ul>
 			<%
 				} else {
@@ -114,7 +114,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="registerUser" role="form"
+					<form method="post" action="users/register" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<input type="hidden" id="withdraw" name="withdraw" value="f" />
@@ -266,7 +266,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row" id='loginfrm'>
-					<form method="post" action="userlogin" role="form"
+					<form method="post" action="users/login" role="form"
 						class="form-horizontal">
 						<div class="row">
 							<label class="control-label col-md-3">아이디</label>

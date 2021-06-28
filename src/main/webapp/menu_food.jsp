@@ -61,7 +61,7 @@
 				if (sess_id != null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li color="white"><a href="memInfo"><img alt="멤버이미지"
+				<li color="white"><a href="info"><img alt="멤버이미지"
 						src="img/mem_icon.jpg"></a></li>
 				<li><a href="Logout.do">로그아웃</a></li>
 			</ul>
@@ -146,7 +146,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="registerUser" role="form"
+					<form method="post" action="users/register" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<input type="hidden" id="withdraw" name="withdraw" value="f" />
@@ -280,7 +280,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="userlogin" role="form"
+					<form method="post" action="users/login" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<label class="control-label col-md-3">아이디 *:</label>
