@@ -26,7 +26,7 @@
 	//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 	function pagelist(pageNo) {
 		$('#pageNo').val(pageNo);
-		var href = "foodlist.do?pageNo=" + pageNo;
+		var href = "foods?pageNo=" + pageNo;
 		console.log(href);
 		$('#searchFood').attr("action", href);
 		$('#searchFood').submit();
@@ -47,7 +47,7 @@
 			<a class="navbar-brand" href="/"
 				style="color: #94b8ff; font-size: 30px; font-weight: bold">SSAFY</a>
 			<ul class="nav navbar-nav">
-				<li><a href="foodlist.do">상품정보</a></li>
+				<li><a href="foods">상품정보</a></li>
 				<li><a href="ranking.do">베스트 섭취정보</a></li>
 				<li><a href="intakelist.do">내 섭취 정보</a></li>
 				<li><a href="prev_intake.do">예상 섭취 정보</a></li>
@@ -55,7 +55,7 @@
 				<li><a href="notice.do">NOTICE</a></li>
 			</ul>
 			<jsp:useBean id="bean" class="com.safefood.model.domain.PageBean" scope="request" />
-			<form action="foodlist.do" method="get" id="searchFood" role="search">
+			<form action="foods" method="get" id="searchFood" role="search">
 				<ul class="nav navbar-nav navbar-center" style="margin-top: 8px;">
 					<li><select name="key" id="key" class="form-control">
 							<option value="all">검색조건</option>

@@ -109,19 +109,19 @@
 						<tr  style="background-color: aliceblue;">
 							<td class="tableval"><br />
 								<button type="button" class="btn btn-info" name="intake"
-									onclick="regraph(${food.code}, '${food.name}', ${food.calory}, ${food.carbo}, ${food.protein}, ${food.fat}, ${food.sugar}, ${food.natrium}, ${food.chole}, ${food.fattyacid}, ${food.transfat})">
+									onclick="regraph(${food.code}, '${food.name}', ${food.calorie}, ${food.carbohydrate}, ${food.protein}, ${food.fat}, ${food.sugar}, ${food.sodium}, ${food.cholesterol}, ${food.fattyAcid}, ${food.transFat})">
 									섭취한다면?</button></td>
 							<td class="tableval">
 								<div class=" row grid-space-10">
 									<div class="col-lg-4 col-md-6 isotope-item app-development">
 										<div class="image-box hc-shadow-2 text-center mb-20">
 											<div class="overlay-container">
-												<img src=${food.img } class="center" id="prodImg0">
+												<img src=${food.imgPath } class="center" id="prodImg0">
 												<div class="overlay-top"></div>
 												<div class="overlay-bottom">
 													<div class="links">
 														<a class="btn btn-gray-transparent btn-animated btn-sm"
-															id="info0" href="foodview.do?code=${food.code }">상품
+															id="info0" href="foods/detail?code=${food.code }">상품
 															정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 														</a>
 													</div>
@@ -144,19 +144,19 @@
 						<tr>
 							<td class="tableval"><br />
 								<button type="button" class="btn btn-info" name="intake"
-									onclick="regraph(${food.code}, '${food.name}', ${food.calory}, ${food.carbo}, ${food.protein}, ${food.fat}, ${food.sugar}, ${food.natrium}, ${food.chole}, ${food.fattyacid}, ${food.transfat})">
+									onclick="regraph(${food.code}, '${food.name}', ${food.calorie}, ${food.carbohydrate}, ${food.protein}, ${food.fat}, ${food.sugar}, ${food.sodium}, ${food.cholesterol}, ${food.fattyAcid}, ${food.transFat})">
 									섭취한다면?</button></td>
 							<td class="tableval">
 								<div class=" row grid-space-10">
 									<div class="col-lg-4 col-md-6 isotope-item app-development">
 										<div class="image-box hc-shadow-2 text-center mb-20">
 											<div class="overlay-container">
-												<img src=${food.img } class="center" id="prodImg1">
+												<img src=${food.imgPath } class="center" id="prodImg1">
 												<div class="overlay-top"></div>
 												<div class="overlay-bottom">
 													<div class="links">
 														<a class="btn btn-gray-transparent btn-animated btn-sm"
-															id="info1" href="foodview.do?code=${food.code }">상품
+															id="info1" href="foods/detail?code=${food.code }">상품
 															정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 														</a>
 													</div>
@@ -196,15 +196,15 @@
 	var fattyacid   =   0 ;
 	var transfat    =   0 ;
 	
-	calory		+=	${sum.calory};               
-	carbo		+=	${sum.carbo	};             
+	calory		+=	${sum.calorie};
+	carbo		+=	${sum.carbohydrate	};
 	protein		+=	${sum.protein};              
 	fat         +=  ${sum.fat    };              
 	sugar       +=  ${sum.sugar  };              
-	natrium     +=  ${sum.natrium}*0.01;         
-	chole       +=  ${sum.chole  };              
-	fattyacid   +=  ${sum.fattyacid};            
-	transfat    +=  ${sum.transfat};             
+	natrium     +=  ${sum.sodium}*0.01;
+	chole       +=  ${sum.cholesterol  };
+	fattyacid   +=  ${sum.fattyAcid};
+	transfat    +=  ${sum.transFat};
 	
 	var intakeExam = document.getElementById('intakeExam');
 	var str = "";

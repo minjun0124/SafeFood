@@ -46,15 +46,15 @@
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
         ['', ''],
-        [ '칼로리'	, ${sum.calory}	],
-		[ '탄수화물'	, ${sum.carbo} 	],
+        [ '칼로리'	, ${sum.calorie}	],
+		[ '탄수화물'	, ${sum.carbohydrate} 	],
 		[ '단백질'	, ${sum.protein}	],
 		[ '지방'		, ${sum.fat}		],
 		[ '당류'		, ${sum.sugar} 	],
-		[ '나트륨'	, ${sum.natrium}*0.01	],
-		[ '콜레스테롤'	, ${sum.chole}		],
-		[ '포화지방산'	, ${sum.fattyacid}	],
-		[ '트랜스지방'	, ${sum.transfat}	]
+		[ '나트륨'	, ${sum.sodium}*0.01	],
+		[ '콜레스테롤'	, ${sum.cholesterol}		],
+		[ '포화지방산'	, ${sum.fattyAcid}	],
+		[ '트랜스지방'	, ${sum.transFat}	]
       ]);
 
       var options = {
@@ -150,13 +150,13 @@
 								<div class="col-lg-4 col-md-6 isotope-item app-development">
 									<div class="image-box hc-shadow-2 text-center mb-20">
 										<div class="overlay-container">
-											<img src=${intake.img } class="center"
+											<img src=${intake.imgPath } class="center"
 												id="prodImg0">
 											<div class="overlay-top"></div>
 											<div class="overlay-bottom">
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="foodview.do?code=${intake.code }">상품
+														id="info0" href="foods/detail?code=${intake.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>

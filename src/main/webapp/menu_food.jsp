@@ -12,7 +12,7 @@
 	function pagelist(pageNo) {
 		//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
 		$('#pageNo').val(pageNo);
-		var href = "foodlist.do?pageNo="+pageNo;
+		var href = "foods?pageNo="+pageNo;
 		console.log(href);
 		$('#searchFood').attr("action", href);
 		$('#searchFood').submit();
@@ -50,7 +50,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="target">
 			<ul class="nav navbar-nav">
-				<li><a href="foodlist.do">상품정보</a></li>
+				<li><a href="foods">상품정보</a></li>
 				<li><a href="ranking.do">베스트 섭취정보</a></li>
 				<li><a href="intakelist.do">내 섭취 정보</a></li>
 				<li><a href="prev_intake.do">예상 섭취 정보</a></li>

@@ -24,6 +24,7 @@ public class FoodTest {
     FoodService foodService;
 
     @Test
+    @Rollback(value = false)
     public void 식품정보_불러오기() {
         // given
         foodService.loadData();

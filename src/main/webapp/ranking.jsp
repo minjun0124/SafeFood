@@ -122,8 +122,8 @@ table, table * {
 						</td>
 						<td class="tableval" style="vertical-align: middle;">
 							<div class="imgbox">
-								<a href="foodview.do?code=${food.code}" >
-									<img src=${food.img } class="center" id="prodImg0">
+								<a href="foods/detail?code=${food.code}" >
+									<img src=${food.imgPath } class="center" id="prodImg0">
 								</a>
 							</div>
 						</td>
@@ -160,7 +160,7 @@ table, table * {
 				},
 				foodview : function(code){
 					console.log(code);
-					location.href="foodview.do?code="+code;
+					location.href="foods/detail?code="+code;
 				}
 			}
 		});

@@ -93,7 +93,7 @@
 						<!-- ================ -->
 						<c:if test="${empty list}">
 							<div>
-								<form action="loaddata.do">
+								<form action="foods/loaddata">
 									<button type="submit" class="btn btn-success">데이터 로드하기</button>
 								</form>
 							</div>
@@ -104,7 +104,7 @@
 								<div class="col-lg-4 col-md-6 isotope-item app-development">
 									<div class="image-box hc-shadow-2 text-center mb-20">
 										<div class="overlay-container">
-											<img width='200' src=${food.img } class="center"
+											<img width='200' src=${food.imgPath } class="center"
 												id="prodImg0">
 											<div class="overlay-top" id="${food.code }top" >
 												<div class="text">
@@ -117,7 +117,7 @@
 											<div class="overlay-bottom" id="${food.code}bottom" >
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="foodview.do?code=${food.code }">상품
+														id="info0" href="foods/detail?code=${food.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>

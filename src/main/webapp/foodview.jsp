@@ -141,15 +141,15 @@
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable(
 				[	[ ''	, '' 			],
-					[ '칼로리'	, ${food.calory}	],
-					[ '탄수화물'	, ${food.carbo} 	],
+					[ '칼로리'	, ${food.calorie}	],
+					[ '탄수화물'	, ${food.carbohydrate} 	],
 					[ '단백질'	, ${food.protein}	],
 					[ '지방'		, ${food.fat}		],
 					[ '당류'		, ${food.sugar} 	],
-					[ '나트륨'	, ${food.natrium}*0.01	],
-					[ '콜레스테롤'	, ${food.chole}		],
-					[ '포화지방산'	, ${food.fattyacid}	],
-					[ '트랜스지방'	, ${food.transfat}	],
+					[ '나트륨'	, ${food.sodium}*0.01	],
+					[ '콜레스테롤'	, ${food.cholesterol}		],
+					[ '포화지방산'	, ${food.fattyAcid}	],
+					[ '트랜스지방'	, ${food.transFat}	],
 				]);
 
 		var options = {
@@ -183,7 +183,7 @@
 				<div class="inner-container center">
 					<div class="row">
 						<div class="col-sm-3">
-							<img width='200' src='${food.img }' class="center" id="prodImg0" style="margin:auto;">
+							<img width='200' src='${food.imgPath }' class="center" id="prodImg0" style="margin:auto;">
 							<div class="overlay-top">
 								<div class="text">
 									<h3>
@@ -205,7 +205,7 @@
 								</tr>
 								<tr>
 									<th>제품칼로리</th>
-									<td>${food.calory}</td>
+									<td>${food.calorie}</td>
 								</tr>
 								<tr>
 									<th>첨가물</th>

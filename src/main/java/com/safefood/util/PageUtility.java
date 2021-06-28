@@ -65,6 +65,7 @@ public class PageUtility {
 		System.out.println("lastpagecount:" + lastpagecount);
 		System.out.println("beforetenpage:" + beforetenpage);
 		System.out.println("nexttenpage:" + nexttenpage);
+		System.out.println("totalpagecnt:" + totalpagecount);
 
 		if (beforetenpage < 1)
 			beforetenpage = 1;
