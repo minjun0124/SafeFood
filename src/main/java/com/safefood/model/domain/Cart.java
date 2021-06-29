@@ -1,8 +1,7 @@
 package com.safefood.model.domain;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import com.safefood.dto.CartDto;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,24 +9,28 @@ import javax.persistence.*;
 @Table(name = "cart")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cart {
+    @EmbeddedId
+    private CartId cartId;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "cart_id")
-    @NonNull
-    private Long id;
-
-    @NonNull
-    private int Quantity;
-
+    @MapsId("userid")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @NonNull
     private User user;
 
+    @MapsId("foodcode")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_code")
     @NonNull
     private Food food;
+
+    @NonNull
+    private int Quantity;
+
+    public void changeQuantity(int quantity) {
+        this.setQuantity(quantity);
+    }
 }
