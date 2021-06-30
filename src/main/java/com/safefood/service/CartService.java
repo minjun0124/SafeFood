@@ -46,7 +46,9 @@ public class CartService {
         cart.changeQuantity(cartDto.getQuantity());
     }
 
-    public void deleteCart(Cart cart) {
+    public void deleteCart(CartDto cartDto) {
+        CartId cartId = new CartId(cartDto.getId(), cartDto.getCode());
+        Cart cart = findCart(cartId);
         cartRepository.deleteCart(cart);
     }
 

@@ -28,6 +28,19 @@ public class CartController {
 
     @Autowired
     private CartService cartService;
+
+    @GetMapping("/insert")
+    private String cartInsert(Model model, CartDto cartDto) {
+        try {
+            log.info(cartDto.toString());
+            cartService.insertCart(cartDto);
+            model.addAttribute("cart_msg", "찜하기 목록에 추가되었습니다. 목록을 확인하시겠습니까?");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "index";
+    }
+
     @GetMapping
     private String cartList(Model model, HttpServletRequest request) {
         session = request.getSession();
@@ -42,6 +55,12 @@ public class CartController {
         return "cartlist";
     }
 
+    @GetMapping("/update")
+    private String cartUpdate(CartDto cartDto) {
+        cartService.changeCartQuantity(cartDto);
+        return "redirect:/carts";
+    }
+
     @GetMapping("/cartintake.do")
     private String cartIntake(Model model, Intake intake, Cart cart, HttpServletRequest request) {
         session = request.getSession();
@@ -51,32 +70,9 @@ public class CartController {
         return "redirect:cartlist.do";
     }
 
-    @GetMapping("/update")
-    private String cartUpdate(CartDto cartDto) {
-        cartService.changeCartQuantity(cartDto);
+    @GetMapping("/delete")
+    private String cartDelete(CartDto cartDto) {
+        cartService.deleteCart(cartDto);
         return "redirect:/carts";
     }
-
-    @GetMapping("/insert")
-    private String cartInsert(Model model, CartDto cartDto) {
-        try {
-            log.info(cartDto.toString());
-            cartService.insertCart(cartDto);
-            model.addAttribute("cart_msg", "찜하기 목록에 추가되었습니다. 목록을 확인하시겠습니까?");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "index";
-    }
-/*
-    @GetMapping("/cartdelete.do")
-    private String cartDelete(Model model, Cart cart, HttpServletRequest request) {
-        session = request.getSession();
-        String id = (String) session.getAttribute("loginid");
-        System.out.println(cart.getCode());
-        Cservice.deleteCart(cart);
-        model.addAttribute("list", Cservice.searchAll(id));
-        return "redirect:cartlist.do";
-    }
-    */
 }
