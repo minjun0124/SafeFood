@@ -54,8 +54,8 @@ public class CartService {
         return cartRepository.findByCodes(cartId);
     }
 
-    public List<Cart> findCartList() {
-        return cartRepository.findAll();
+    public List<Cart> findCartList(String userId) {
+        return cartRepository.findByUserId(userId);
     }
 
     public void intakeCart(Cart cart, Intake intake) {

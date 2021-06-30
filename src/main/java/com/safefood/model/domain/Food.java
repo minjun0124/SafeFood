@@ -1,5 +1,6 @@
 package com.safefood.model.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NonNull
+@Data
 public class Food {
 
     @Id

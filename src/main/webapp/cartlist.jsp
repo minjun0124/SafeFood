@@ -13,8 +13,9 @@
 </head> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -92,23 +93,22 @@
 					<th class="tablekey"></th>
 				</tr>
 				<c:forEach var="cart" items="${list }">
-					<form method="get" id="upcart${cart.code}" name="upcart">
+					<form method="get" id="upcart${cart.cartId.foodCode}" name="upcart">
 					<tr>
 						<td class="tableval"><br />
 						<br />
-						<br />${cart.code }</td>
+						<br />${cart.cartId.foodCode }</td>
 						<td class="tableval">
 							<div class=" row grid-space-10">
 								<div class="col-lg-4 col-md-6 isotope-item app-development">
 									<div class="image-box hc-shadow-2 text-center mb-20">
 										<div class="overlay-container">
-											<img src=${cart.imgPath } class="center"
-												id="prodImg0">
+											<img src=${cart.food.imgPath } class="center" id="prodImg0">
 											<div class="overlay-top"></div>
 											<div class="overlay-bottom">
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="${path}/foods/detail?code=${cart.code }">상품
+														id="info0" href="${path}/foods/detail?code=${cart.cartId.foodCode }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>
@@ -118,27 +118,27 @@
 								</div>
 							</div>
 						</td>
-						<td class="tableval">${cart.name }</td>
+						<td class="tableval">${cart.food.name }</td>
 						<td class="tableval"><input type="number" name="quantity"
 							style="width: 30%"
 							placeholder="${cart.quantity }" value="${cart.quantity }" /><br/>
 							<input type="hidden" name="code"
 							class="form-control" style="width: 30%"
-							value="${cart.code }"/>
+							value="${cart.cartId.foodCode }"/>
 							<input type="hidden" name="id"
 							class="form-control" style="width: 30%"
 							value="<%=sess_id%>"/>
 							<button class="btn btn-info" type="submit"
-								onclick="updatebtn(${cart.code })">
+								onclick="updatebtn(${cart.cartId.foodCode })">
 								<b>수 정</b>
 							</button></td>
 						<td class="tableval">
 							<button class="btn btn-info" type="submit"
-								onclick="intakebtn(${cart.code })">
+								onclick="intakebtn(${cart.cartId.foodCode })">
 								<b>섭 취</b>
 							</button> <br />
 							<button class="btn btn-info" type="submit"
-								onclick="deletebtn(${cart.code })">
+								onclick="deletebtn(${cart.cartId.foodCode })">
 								<b>삭 제</b>
 							</button>
 						</td>

@@ -46,7 +46,7 @@
 <br>
 	<div class="container">
 		<div class="collapse navbar-collapse" id="target">
-			<a class="navbar-brand" href="${path}"
+			<a class="navbar-brand" href="${path}/index.jsp"
 				style="color: #94b8ff; font-size: 30px; font-weight: bold">SSAFY</a>
 			<ul class="nav navbar-nav">
 				<li><a href="${path}/foods">상품정보</a></li>

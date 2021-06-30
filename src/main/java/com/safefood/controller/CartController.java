@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -28,11 +29,16 @@ public class CartController {
     @Autowired
     private CartService cartService;
     @GetMapping
-    private String cartList(@ModelAttribute("pagebean") PageBean pagebean, Model model, HttpServletRequest request) {
+    private String cartList(Model model, HttpServletRequest request) {
         session = request.getSession();
         String id = (String) session.getAttribute("loginid");
-        model.addAttribute("list", cartService.findCartList());
-        model.addAttribute("bean", pagebean);
+        List<Cart> cartList = cartService.findCartList(id);
+//        model.addAttribute("list", cartService.findCartList(id));
+        model.addAttribute("list", cartList);
+        for (Cart cart: cartList) {
+//            log.info(cart.toString());
+            log.info(cart.getFood().getImgPath());
+        }
         return "cartlist";
     }
 
@@ -41,7 +47,7 @@ public class CartController {
         session = request.getSession();
         String id = (String) session.getAttribute("loginid");
         cartService.intakeCart(cart, intake);
-        model.addAttribute("list", cartService.findCartList());
+        model.addAttribute("list", cartService.findCartList(id));
         return "redirect:cartlist.do";
     }
 
