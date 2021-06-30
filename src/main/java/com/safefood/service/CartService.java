@@ -1,11 +1,10 @@
 package com.safefood.service;
 
 import com.safefood.dto.CartDto;
-import com.safefood.model.domain.Cart;
-import com.safefood.model.domain.CartId;
-import com.safefood.model.domain.Food;
-import com.safefood.model.domain.Intake;
+import com.safefood.model.domain.*;
 import com.safefood.repository.CartRepository;
+import com.safefood.repository.FoodRepository;
+import com.safefood.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,20 +13,31 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class CartService {
 
     private final CartRepository cartRepository;
+    private final UserRepository userRepository;
+    private final FoodRepository foodRepository;
 
-    public void insertCart(Cart cart) {
-        Optional<Cart> opCart = Optional.ofNullable(cartRepository.findByCodes(cart.getCartId()));
+    public void insertCart(CartDto cartDto) {
+        CartId cartId = new CartId(cartDto.getId(), cartDto.getCode());
+        Optional<Cart> opCart = Optional.ofNullable(cartRepository.findByCodes(cartId));
         if (opCart.isEmpty()) {
+            Cart cart = makeCartByCartId(cartId, cartDto.getQuantity());
             cartRepository.insertCart(cart);
         } else {
             Cart findCart = opCart.get();
-            int newQuantity = findCart.getQuantity() + cart.getQuantity();
+            int newQuantity = findCart.getQuantity() + cartDto.getQuantity();
             findCart.changeQuantity(newQuantity);
         }
+    }
+
+    public Cart makeCartByCartId(CartId cartId, int quantity){
+        User user = userRepository.findById(cartId.getUserId());
+        Food food = foodRepository.findByCode(cartId.getFoodCode());
+        return new Cart(cartId, user, food, quantity);
     }
 
     public void changeCartQuantity(CartDto cartDto) {
@@ -44,8 +54,8 @@ public class CartService {
         return cartRepository.findByCodes(cartId);
     }
 
-    public List<Cart> findCartList(String id) {
-        return cartRepository.findAll(id);
+    public List<Cart> findCartList() {
+        return cartRepository.findAll();
     }
 
     public void intakeCart(Cart cart, Intake intake) {

@@ -7,27 +7,23 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cart")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cart {
     @EmbeddedId
     private CartId cartId;
 
-    @MapsId("userid")
+    @MapsId("userId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @NonNull
     private User user;
 
-    @MapsId("foodcode")
+    @MapsId("foodCode")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_code")
-    @NonNull
     private Food food;
 
-    @NonNull
     private int Quantity;
 
     public void changeQuantity(int quantity) {

@@ -37,12 +37,13 @@ public class CartTest {
         User user = userRegister();
         int foodCode = 10;
         int quantity = 6;
+        CartDto cartDto = new CartDto(user.getId(), foodCode, quantity);
         CartId cartId = new CartId(user.getId(), foodCode);
         Cart cart = new Cart(cartId, userService.findById(user.getId())
                 , foodService.findByCode(foodCode), quantity);
 
         // when
-        cartService.insertCart(cart);
+        cartService.insertCart(cartDto);
 
         // then
         Cart findCart = cartService.findCart(cartId);
@@ -55,15 +56,14 @@ public class CartTest {
         User user = userRegister();
         int foodCode = 10;
         int quantity = 6;
+        CartDto cartDto = new CartDto(user.getId(), foodCode, quantity);
         CartId cartId = new CartId(user.getId(), foodCode);
-        Cart cart = new Cart(cartId, userService.findById(user.getId())
-                , foodService.findByCode(foodCode), quantity);
-        cartService.insertCart(cart);
+        cartService.insertCart(cartDto);
         int newQuantity = 10;
-        CartDto cartDto = new CartDto(user.getId(), foodCode, newQuantity);
+        CartDto newCartDto = new CartDto(user.getId(), foodCode, newQuantity);
 
         // when
-        cartService.changeCartQuantity(cartDto);
+        cartService.changeCartQuantity(newCartDto);
 
         // then
         Cart findCart = cartService.findCart(cartId);
@@ -72,7 +72,7 @@ public class CartTest {
 
     private User userRegister() {
         Address address = new Address("seoul", "safe load", "1234");
-        User user = new User("test", "test", "test", "seoul", "01012341234");
+        User user = new User("testJunit", "test", "test", "seoul", "01012341234");
 
         userService.join(user);
         return user;

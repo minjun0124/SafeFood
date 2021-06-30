@@ -13,20 +13,20 @@ import java.util.Objects;
 @NoArgsConstructor
 public class CartId implements Serializable {
     @Column(name = "user_id")
-    private String userid;
+    private String userId;
     @Column(name = "food_code")
-    private int foodcode;
+    private int foodCode;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CartId)) return false;
         CartId cartId = (CartId) o;
-        return foodcode == cartId.foodcode && Objects.equals(userid, cartId.userid);
+        return foodCode == cartId.foodCode && Objects.equals(userId, cartId.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userid, foodcode);
+        return Objects.hash(userId, foodCode);
     }
 }

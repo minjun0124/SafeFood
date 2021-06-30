@@ -28,14 +28,14 @@ public class CartRepository {
         return em.find(Cart.class, cartId);
     }
 
-    public List<Cart> findAll(String id) {
+    public List<Cart> findAll() {
         return em.createQuery("select c from Cart c", Cart.class)
                 .getResultList();
     }
 
     public List<Food> joinFood(CartId cartId) {
-        return em.createQuery("select f from Food f join Cart c where f.code = c.cartId.foodcode and c.cartId.userid = :id")
-                .setParameter("id", cartId.getUserid())
+        return em.createQuery("select f from Food f join Cart c where f.code = c.cartId.foodCode and c.cartId.userId = :id")
+                .setParameter("id", cartId.getUserId())
                 .getResultList();
     }
 
