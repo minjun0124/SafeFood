@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -249,7 +251,7 @@ body {
 							console.log(response)
 							if(response.data.state=='true'){
 								alert('등록 성공')
-								location.href="noticelist.jsp"
+								location.href="${path}/noticelist.jsp"
 							} else {
 								alert('등록 실패')
 							}
@@ -260,7 +262,7 @@ body {
 						.then( response => {
 							if(response.data.state=='true'){
 								alert('삭제 성공')
-								location.href='noticelist.jsp'
+								location.href='${path}/noticelist.jsp'
 							} else {
 								alert('삭제 실패')
 							}
@@ -284,7 +286,7 @@ body {
 						console.log(response)
 						if(response.data.state=='true'){
 							alert('수정 성공')
-							location.href="noticelist.jsp"
+							location.href="${path}/noticelist.jsp"
 						} else {
 							alert('수정 실패')
 						}
@@ -297,7 +299,7 @@ body {
 			var id = "<%=sess_id%>";
 			if (id == "null") {
 				console.log("is in")
-				location.href="/SafeFoodSpring/reIndex.do?msg='loginplz'";
+				location.href="${path}/reIndex.do?msg='loginplz'";
 			}
 		};
 	</script>

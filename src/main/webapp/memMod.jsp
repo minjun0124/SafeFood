@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -24,7 +27,7 @@ body {
 		<div align="center">
 			<h1>${msg_psearch }</h1>
 		</div>
-		<form method="post" id="modform" action="update" role="form"
+		<form method="post" id="modform" action="${path}/update" role="form"
 			class="form-horizontal">
 			<%-- <div class="form-group">
 				<label class="control-label col-md-3">고객님의 아이디 *: <%=sess_id%></label>

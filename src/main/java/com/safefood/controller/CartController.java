@@ -27,8 +27,7 @@ public class CartController {
 
     @Autowired
     private CartService cartService;
-/*
-    @GetMapping("/cartlist.do")
+    @GetMapping
     private String cartList(@ModelAttribute("pagebean") PageBean pagebean, Model model, HttpServletRequest request) {
         session = request.getSession();
         String id = (String) session.getAttribute("loginid");
@@ -36,6 +35,7 @@ public class CartController {
         model.addAttribute("bean", pagebean);
         return "cartlist";
     }
+
     @GetMapping("/cartintake.do")
     private String cartIntake(Model model, Intake intake, Cart cart, HttpServletRequest request) {
         session = request.getSession();
@@ -43,8 +43,9 @@ public class CartController {
         cartService.intakeCart(cart, intake);
         model.addAttribute("list", cartService.findCartList());
         return "redirect:cartlist.do";
-    }*/
-/*
+    }
+
+    /*
 
     @GetMapping("/cartupdate.do")
     private String cartUpdate(Model model, CartDto cartDto, HttpServletRequest request) {

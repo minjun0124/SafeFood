@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -117,7 +118,7 @@
 											<div class="overlay-bottom" id="${food.code}bottom" >
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="foods/detail?code=${food.code }">상품
+														id="info0" href="${path}/foods/detail?code=${food.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>

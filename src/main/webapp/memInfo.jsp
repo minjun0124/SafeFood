@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, com.safefood.model.domain.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%-- <%
 	User m = (User) request.getAttribute("member");
 	String list =  m.getAllergy();
@@ -106,7 +107,7 @@ body {
 				</tr>
 			</table>
 			<c:if test="${isAdmin == 1}">
-				<a type="button" class="btn btn-success" href="userlist.do"
+				<a type="button" class="btn btn-success" href="${path}/users"
 					style="margin-top: 8px"> <b>회원 목록</b>
 				</a>
 			</c:if>
@@ -118,7 +119,7 @@ body {
 				data-target="#memDel" style="margin-top: 8px">
 				<b>회원 정보 삭제</b>
 			</button>
-			<a class="btn btn-info" href="cartlist.do" style="margin-top: 8px">
+			<a class="btn btn-info" href="${path}/carts" style="margin-top: 8px">
 				<b>나의 찜 목록</b>
 			</a>
 		</div>
@@ -134,7 +135,7 @@ body {
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<form method="get" action="mod" role="form"
+							<form method="get" action="${path}/users/mod" role="form"
 								class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label col-md-4">비밀번호 *:</label>
@@ -188,7 +189,7 @@ body {
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<form method="post" action="users/withdraw" role="form"
+							<form method="post" action="${path}/users/withdraw" role="form"
 								class="form-horizontal">
 								<div class="form-group">
 									<label class="control-label col-md-4">비밀번호 *:</label>
@@ -327,7 +328,7 @@ body {
 				data : query,
 				success : function(data) {
 					if (data == 1) {
-						location.href='/users/mod';
+						location.href='${path}/users/mod';
 					} else {
 						alert("비밀번호가 틀립니다. 다시 시도해주세요.");
 						location.reload();
@@ -348,7 +349,7 @@ body {
 				data : query,
 				success : function(data) {
 					if (data == 1) {
-						location.href='/users/withdraw';
+						location.href='${path}/users/withdraw';
 					} else {
 						alert("비밀번호가 틀립니다. 다시 시도해주세요.");
 						location.reload();

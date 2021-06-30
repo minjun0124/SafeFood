@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -94,7 +94,7 @@
 	});
 	function intake(){
 		var frm = document.getElementById("food_action");
-		frm.action="insertintake.do";
+		frm.action="${path}/intakes/insert";
 		frm.submit();
 	}
 	function cart(){

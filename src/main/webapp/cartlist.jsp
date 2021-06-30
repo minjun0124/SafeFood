@@ -13,6 +13,7 @@
 </head> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
@@ -44,17 +45,17 @@
 <script type="text/javascript">
 	function updatebtn(code){
 		var frm = document.getElementById("upcart"+code);
-		frm.action="cartupdate.do";
+		frm.action="${path}/carts/update";
 		frm.submit();
 	}
 	function intakebtn(code){
 		var frm = document.getElementById("upcart"+code);
-		frm.action="cartintake.do";
+		frm.action="${path}/carts/intake";
 		frm.submit();
 	}
 	function deletebtn(code){
 		var frm = document.getElementById("upcart"+code);
-		frm.action="cartdelete.do";
+		frm.action="${path}/carts/delete";
 		frm.submit();
 	}
 </script>
@@ -107,7 +108,7 @@
 											<div class="overlay-bottom">
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="foods/detail?code=${cart.code }">상품
+														id="info0" href="${path}/foods/detail?code=${cart.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>

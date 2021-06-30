@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
+
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -163,10 +166,10 @@ body {
 			,
 			methods : {
 				questionDetail : function(qcode) {
-					location.href = "qdetail.jsp?qcode=" + qcode;
+					location.href = "${path}/qdetail.jsp?qcode=" + qcode;
 				},
 				questionInsert : function() {
-					location.href = "qinsert.jsp";
+					location.href = "${path}/qinsert.jsp";
 				}
 				,searchTitle : function() {
 					console.log(this.word)
@@ -194,7 +197,7 @@ body {
 			var id = "<%=sess_id%>";
 			if (id == "null") {
 				console.log("is in")
-				location.href="/SafeFoodSpring/reIndex.do?msg='loginplz'";
+				location.href="${path}/reIndex.do?msg='loginplz'";
 			}
 		};
 		

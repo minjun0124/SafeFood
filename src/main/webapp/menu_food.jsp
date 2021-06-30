@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.safefood.model.domain.User"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -12,7 +14,7 @@
 	function pagelist(pageNo) {
 		//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
 		$('#pageNo').val(pageNo);
-		var href = "foods?pageNo="+pageNo;
+		var href = "${path}/foods?pageNo="+pageNo;
 		console.log(href);
 		$('#searchFood').attr("action", href);
 		$('#searchFood').submit();
@@ -22,7 +24,7 @@
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
 		document.getElementById("code").value = code;
 		var frm = document.getElementById("frm");
-		frm.action = "searchFood.do";
+		frm.action = "${path}/foods/search";
 		frm.submit();
 	}
 </script>
@@ -38,7 +40,7 @@
 </style>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
-		<a class="navbar-brand" href="index.do"
+		<a class="navbar-brand" href="${path}"
 			style="color: #94b8ff; font-size: 30px; font-weight: bold">SSAFY</a>
 		<div class="navbar-header">
 			<button class="navbar-toggle collapsed" data-toggle="collapse"
@@ -50,20 +52,20 @@
 		</div>
 		<div class="collapse navbar-collapse" id="target">
 			<ul class="nav navbar-nav">
-				<li><a href="foods">상품정보</a></li>
-				<li><a href="ranking.do">베스트 섭취정보</a></li>
-				<li><a href="intakelist.do">내 섭취 정보</a></li>
-				<li><a href="prev_intake.do">예상 섭취 정보</a></li>
-				<li><a href="qna.do">Q&A</a></li>
-				<li><a href="notice.do">NOTICE</a></li>
+				<li><a href="${path}/foods">상품정보</a></li>
+				<li><a href="${path}/ranking">베스트 섭취정보</a></li>
+				<li><a href="${path}/intakes">내 섭취 정보</a></li>
+				<li><a href="${path}/intakes/prev">예상 섭취 정보</a></li>
+				<li><a href="${path}/qna">Q&A</a></li>
+				<li><a href="${path}/notice">NOTICE</a></li>
 			</ul>
 			<%
 				if (sess_id != null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li color="white"><a href="info"><img alt="멤버이미지"
+				<li color="white"><a href="${path}/users/info"><img alt="멤버이미지"
 						src="img/mem_icon.jpg"></a></li>
-				<li><a href="Logout.do">로그아웃</a></li>
+				<li><a href="${path}/users/logout">로그아웃</a></li>
 			</ul>
 			<%
 				}
@@ -146,7 +148,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="users/register" role="form"
+					<form method="post" action="${path}/users/register" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<input type="hidden" id="withdraw" name="withdraw" value="f" />
@@ -280,7 +282,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="users/login" role="form"
+					<form method="post" action="${path}/users/login" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<label class="control-label col-md-3">아이디 *:</label>
@@ -334,7 +336,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<form method="post" action="PwSearch.do" role="form"
+					<form method="post" action="${path}/users/pwSearch" role="form"
 						class="form-horizontal">
 						<div class="form-group">
 							<label class="control-label col-md-3">아이디 *:</label>

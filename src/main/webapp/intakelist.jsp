@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
 <%
 	String sess_id = (String) request.getSession().getAttribute("loginid");
 %>
@@ -34,11 +35,11 @@
 <script type="text/javascript">
 	function updatebtn(code){
 		var frm = document.getElementById("upintake"+code);
-		frm.action="intakeupdate.do";
+		frm.action="${path}/intakes/update";
 		frm.submit();
 	}
 	function deletebtn(intakecode){
-		location.href="intakedelete.do?intakecode="+intakecode;
+		location.href="${path}/intakes/delete?intakecode="+intakecode;
 	}
 	google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
@@ -96,7 +97,7 @@
 	<section class="main-container">
 		<div class="container " style="text-align: center;">
 			<jsp:useBean id="pagebean" class="com.safefood.model.domain.PageBean" scope="request"></jsp:useBean>
-			<form action="intakelist.do" method="get" id="searchForm">
+			<form action="${path}/intakes" method="get" id="searchForm">
 				<table style="width: 100%; " class="center">
 				<tbody style="width: 100%; ">
 					<tr style="width: 100%; ">
@@ -156,7 +157,7 @@
 											<div class="overlay-bottom">
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="foods/detail?code=${intake.code }">상품
+														id="info0" href="${path}/foods/detail?code=${intake.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>
@@ -210,7 +211,7 @@
 			var id = "<%=sess_id%>";
 			if (id == "null") {
 				console.log("is in")
-				location.href="/SafeFoodSpring/reIndex.do?msg='loginplz'";
+				location.href="${path}/reIndex?msg='loginplz'";
 			}
 		};
 	</script>

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="<%=request.getContextPath()%>" scope="application"/>
+
 <% String key = (String)request.getParameter("key"); 
 	System.out.println(key);
 	if(key==null || key.equals("intake")){
@@ -9,6 +12,7 @@
 		key = "조회수";
 	}
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -86,7 +90,7 @@ table, table * {
 	</div>
 	<section class="main-container">
 		<div class="container " style="text-align: center;" >
-			<form action="ranking.do" method="get" id="ranking">
+			<form action="${path}/ranking" method="get" id="ranking">
 				<div class="btn-group" data-toggle="buttons" style="width:60%;">
 					<label class="btn btn-default center b" @click="setKey('intake')" id="섭취횟수" >
 						<input type="radio" value="intakecnt" class="center"> <span class="center s">섭취횟수</span>
@@ -122,7 +126,7 @@ table, table * {
 						</td>
 						<td class="tableval" style="vertical-align: middle;">
 							<div class="imgbox">
-								<a href="foods/detail?code=${food.code}" >
+								<a href="${path}/foods/detail?code=${food.code}" >
 									<img src=${food.imgPath } class="center" id="prodImg0">
 								</a>
 							</div>
@@ -156,11 +160,11 @@ table, table * {
 					console.log(key)
 					this.sortkey = key
 					console.log(this.sortkey)
-					location.href="ranking.do?key="+key
+					location.href="${path}/ranking?key="+key
 				},
 				foodview : function(code){
 					console.log(code);
-					location.href="foods/detail?code="+code;
+					location.href="${path}/foods/detail?code="+code;
 				}
 			}
 		});
