@@ -51,17 +51,11 @@ public class CartController {
         return "redirect:cartlist.do";
     }
 
-    /*
-
-    @GetMapping("/cartupdate.do")
-    private String cartUpdate(Model model, CartDto cartDto, HttpServletRequest request) {
-        session = request.getSession();
-        String id = (String) session.getAttribute("loginid");
+    @GetMapping("/update")
+    private String cartUpdate(CartDto cartDto) {
         cartService.changeCartQuantity(cartDto);
-        model.addAttribute("list", cartService.searchAll(id));
-        return "redirect:cartlist.do";
+        return "redirect:/carts";
     }
-*/
 
     @GetMapping("/insert")
     private String cartInsert(Model model, CartDto cartDto) {
