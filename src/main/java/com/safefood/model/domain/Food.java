@@ -1,9 +1,6 @@
 package com.safefood.model.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,12 +10,21 @@ import java.util.List;
 @Getter @Setter
 @NonNull
 @Data
+@NoArgsConstructor
 public class Food {
 
     @Id
     @Column(name = "food_code")
     private int code;
     private String name;
+
+    public Food(int code, String name, String imgPath, Long searchCnt) {
+        this.code = code;
+        this.name = name;
+        this.imgPath = imgPath;
+        this.searchCnt = searchCnt.intValue();
+    }
+
     private double supportPerEat;
     private double calorie;
     private double carbohydrate;

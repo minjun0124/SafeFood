@@ -1,6 +1,7 @@
 package com.safefood.controller;
 
 import com.safefood.dto.IntakeDto;
+import com.safefood.model.domain.Food;
 import com.safefood.service.FoodService;
 import com.safefood.service.IntakeService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -32,4 +34,5 @@ public class IntakeController {
         model.addAttribute("food", foodService.findByCode(intakeDto.getCode()));
         return "foodview";
     }
+
 }

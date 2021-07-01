@@ -90,7 +90,7 @@ table, table * {
 	</div>
 	<section class="main-container">
 		<div class="container " style="text-align: center;" >
-			<form action="${path}/ranking" method="get" id="ranking">
+			<form action="${path}/foods/ranking" method="get" id="ranking">
 				<div class="btn-group" data-toggle="buttons" style="width:60%;">
 					<label class="btn btn-default center b" @click="setKey('intake')" id="섭취횟수" >
 						<input type="radio" value="intakecnt" class="center"> <span class="center s">섭취횟수</span>
@@ -112,11 +112,11 @@ table, table * {
 				<c:forEach var="food" varStatus="status" items="${list }">
 					<form method="get" id="upintake${food.code}" name="upintake">
 					<tr >
-						<td class="cetner" style="vertical-align: middle;" >
+						<td class="center" style="vertical-align: middle;" >
 						<c:choose>
 						<c:when test="${status.count < 4 }">
-						<div class="cetner">
-							<img src="img/trophy0${status.count }.png" class="cetner">
+						<div class="center">
+							<img src="img/trophy0${status.count }.png" class="center">
 						</div>
 						</c:when>						
 						<c:otherwise>
@@ -135,7 +135,7 @@ table, table * {
 							<h3><strong>${food.name}</strong></h3>
 						</td>
 						<td class="tableval" style="vertical-align: middle;">
-							${food.searchcnt}
+							${food.searchCnt}
 						</td>
 					</tr>
 					</form>
@@ -160,7 +160,7 @@ table, table * {
 					console.log(key)
 					this.sortkey = key
 					console.log(this.sortkey)
-					location.href="${path}/ranking?key="+key
+					location.href="${path}/foods/ranking?key="+key
 				},
 				foodview : function(code){
 					console.log(code);

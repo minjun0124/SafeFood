@@ -1,5 +1,6 @@
 package com.safefood.repository;
 
+import com.safefood.model.domain.Food;
 import com.safefood.model.domain.Intake;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -33,4 +34,5 @@ public class IntakeRepository {
         Intake intake = em.find(Intake.class, intakecode);
         em.remove(intake);
     }
+
 }

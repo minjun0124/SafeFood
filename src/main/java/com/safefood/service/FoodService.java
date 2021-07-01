@@ -34,9 +34,13 @@ public class FoodService {
         return foodRepository.findAll(pageBean);
     }
 
+    @Transactional
     public void searchCount(int code) {
         Food food = foodRepository.findByCode(code);
         food.setSearchCnt(food.getSearchCnt() + 1);
     }
 
+    public List<Food> ranking(String key) {
+        return foodRepository.findOrderByCount(key);
+    }
 }

@@ -50,7 +50,7 @@
 				style="color: #94b8ff; font-size: 30px; font-weight: bold">SSAFY</a>
 			<ul class="nav navbar-nav">
 				<li><a href="${path}/foods">상품정보</a></li>
-				<li><a href="${path}/ranking">베스트 섭취정보</a></li>
+				<li><a href="${path}/foods/ranking">베스트 섭취정보</a></li>
 				<li><a href="${path}/intakes">내 섭취 정보</a></li>
 				<li><a href="${path}/intakes/prev">예상 섭취 정보</a></li>
 				<li><a href="${path}/qna">Q&A</a></li>

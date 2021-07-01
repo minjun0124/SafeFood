@@ -1,5 +1,6 @@
 package com.safefood.controller;
 
+import com.safefood.model.domain.Food;
 import com.safefood.model.domain.PageBean;
 import com.safefood.service.FoodService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,5 +46,11 @@ public class FoodController {
         foodService.searchCount(code);
         model.addAttribute("food", foodService.findByCode(code));
         return "foodview";
+    }
+
+    @GetMapping("/ranking")
+    private String ranking(Model model, String key) {
+        model.addAttribute("list", foodService.ranking(key));
+        return "ranking";
     }
 }
