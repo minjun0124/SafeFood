@@ -3,7 +3,6 @@ package com.safefood.controller;
 import com.safefood.dto.CartDto;
 import com.safefood.model.domain.Cart;
 import com.safefood.model.domain.Intake;
-import com.safefood.model.domain.PageBean;
 import com.safefood.service.CartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,12 +44,7 @@ public class CartController {
         session = request.getSession();
         String id = (String) session.getAttribute("loginid");
         List<Cart> cartList = cartService.findCartList(id);
-//        model.addAttribute("list", cartService.findCartList(id));
         model.addAttribute("list", cartList);
-        for (Cart cart: cartList) {
-//            log.info(cart.toString());
-            log.info(cart.getFood().getImgPath());
-        }
         return "cartlist";
     }
 

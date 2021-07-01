@@ -11,6 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cart {
+
     @EmbeddedId
     private CartId cartId;
 
@@ -29,4 +30,5 @@ public class Cart {
     public void changeQuantity(int quantity) {
         this.setQuantity(quantity);
     }
+
 }

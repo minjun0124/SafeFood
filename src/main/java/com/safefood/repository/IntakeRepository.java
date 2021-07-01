@@ -23,8 +23,9 @@ public class IntakeRepository {
         return em.find(Intake.class, intakecode);
     }
 
-    public List<Intake> findAll() {
-        return em.createQuery("select i from Intake i", Intake.class)
+    public List<Intake> findByUserId(String userId) {
+        return em.createQuery("select i from Intake i where i.user.id = :id")
+                .setParameter("id", userId)
                 .getResultList();
     }
 

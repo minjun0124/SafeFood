@@ -25,5 +25,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("/resources/");
         registry.addResourceHandler("/carts/**")
                 .addResourceLocations("/resources/");
+        registry.addResourceHandler("/intakes/**")
+                .addResourceLocations("/resources/");
     }
 }
