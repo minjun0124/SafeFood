@@ -120,6 +120,11 @@ public class IntakeService {
         findIntake.setQuantity(intake.getQuantity());
     }
 
+    @Transactional
+    public void deleteIntake(int intakeCode) {
+        intakeRepository.deleteIntake(intakeCode);
+    }
+
 /*
     public void deleteIntake(int intakecode) {
         intakeDaoImpl.deleteIntake(intakecode);

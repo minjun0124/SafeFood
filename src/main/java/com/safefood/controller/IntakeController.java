@@ -68,9 +68,17 @@ public class IntakeController {
     }
 
     @GetMapping("/update")
-    private String intakeupdate(Intake intake) {
+    private String intakeUpdate(Intake intake) {
         intakeService.updateIntake(intake);
         log.info(String.valueOf(intake.getCode()));
+        return "redirect:/intakes";
+    }
+
+    @GetMapping("/delete")
+    private String intakeDelete(int intakeCode) {
+        intakeService.deleteIntake(intakeCode);
+        log.info(String.valueOf(intakeCode));
+
         return "redirect:/intakes";
     }
 }

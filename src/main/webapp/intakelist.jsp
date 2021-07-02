@@ -38,8 +38,8 @@
 		frm.action="${path}/intakes/update";
 		frm.submit();
 	}
-	function deletebtn(intakecode){
-		location.href="${path}/intakes/delete?intakecode="+intakecode;
+	function deletebtn(intakeCode){
+		location.href="${path}/intakes/delete?intakeCode="+intakeCode;
 	}
 	google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
