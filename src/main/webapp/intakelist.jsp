@@ -170,9 +170,9 @@
 						<td class="tableval">${intake.intakeDate }</td>
 						<td class="tableval">
 							<input type="number" name="quantity" style="width: 30%" placeholder="${intake.quantity }" /><br/>
-							<input type="hidden" name="code" class="form-control" style="width: 30%" value="${intake.food.code }"/>
+							<input type="hidden" name="foodCode" class="form-control" style="width: 30%" value="${intake.food.code }"/>
 							<input type="hidden" name="id" class="form-control" style="width: 30%" value="${loginid }"/>
-							<input type="hidden" name="intakecode" class="form-control" style="width: 30%" value="${intake.code }"/>
+							<input type="hidden" name="code" class="form-control" style="width: 30%" value="${intake.code }"/>
 							<button class="btn btn-info" type="submit" onclick="updatebtn(${intake.food.code })">
 								<b>수 정</b>
 							</button>

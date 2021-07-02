@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class IntakeService {
 
@@ -29,6 +29,7 @@ public class IntakeService {
     @Autowired
     FoodRepository foodRepository;
 
+    @Transactional
     public void insertIntake(IntakeDto intakeDto) {
         Intake intake = makeIntake(intakeDto);
         intakeRepository.save(intake);
@@ -111,6 +112,12 @@ public class IntakeService {
             return intakeRepository.findOptionMonths(id);
         }*/
         return intakeRepository.findOptionCode(id);
+    }
+
+    @Transactional
+    public void updateIntake(Intake intake) {
+        Intake findIntake = intakeRepository.findOne(intake.getCode());
+        findIntake.setQuantity(intake.getQuantity());
     }
 
 /*

@@ -45,12 +45,6 @@ public class IntakeController {
     private String intakeList(Model model, HttpServletRequest request, @ModelAttribute("pagebean") PageBean pagebean) {
         String id = (String) request.getSession().getAttribute("loginid");
 
-        System.out.println(pagebean);
-
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("id", id);
-        map.put("pagebean", pagebean);
-
         List<Intake> intakes = intakeService.findIntakes(id, pagebean);
         FoodDto sum = intakeService.sumOfNutrtion(intakes);
 
@@ -71,5 +65,12 @@ public class IntakeController {
 //        model.addAttribute("months", months);
 
         return "intakelist";
+    }
+
+    @GetMapping("/update")
+    private String intakeupdate(Intake intake) {
+        intakeService.updateIntake(intake);
+        log.info(String.valueOf(intake.getCode()));
+        return "redirect:/intakes";
     }
 }
