@@ -2,10 +2,14 @@ package com.safefood.repository;
 
 import com.safefood.model.domain.Food;
 import com.safefood.model.domain.Intake;
+import com.safefood.model.domain.PageBean;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.time.LocalDateTime;
+import java.time.Year;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,8 +29,10 @@ public class IntakeRepository {
     }
 
     public List<Intake> findByUserId(String userId) {
-        return em.createQuery("select i from Intake i where i.user.id = :id")
-                .setParameter("id", userId)
+        return em.createQuery("select i from Intake i " +
+                "join fetch i.food " +
+                "where i.user.id = :userId order by i.intakeDate")
+                .setParameter("userId", userId)
                 .getResultList();
     }
 
@@ -35,4 +41,21 @@ public class IntakeRepository {
         em.remove(intake);
     }
 
+    public List<Integer> findOptionCode(String userId) {
+        return em.createQuery("select distinct i.food.code from Intake i join i.food " +
+                "where i.user.id = :userId ", Integer.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
+/*
+    public List<Object> findOptionYears(String id) {
+        return em.createNativeQuery("select distinct YEAR(i.intake_date) from Intake i", Object.class)
+                .getResultList();
+    }
+
+    public List<Integer> findOptionMonths(String id) {
+        return em.createNativeQuery("select distinct MONTH(i.intakeDate) from Intake i", LocalDateTime.class)
+                .getResultList();
+    }
+*/
 }

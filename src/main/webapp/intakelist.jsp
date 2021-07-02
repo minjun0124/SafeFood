@@ -141,23 +141,23 @@
 					<th class="tablekey"></th>
 				</tr>
 				<c:forEach var="intake" items="${list }">
-					<form method="get" id="upintake${intake.code}" name="upintake">
+					<form method="get" id="upintake${intake.food.code}" name="upintake">
 					<tr>
 						<td class="tableval"><br />
 						<br />
-						<br />${intake.code }</td>
+						<br />${intake.food.code }</td>
 						<td class="tableval">
 							<div class=" row grid-space-10">
 								<div class="col-lg-4 col-md-6 isotope-item app-development">
 									<div class="image-box hc-shadow-2 text-center mb-20">
 										<div class="overlay-container">
-											<img src=${intake.imgPath } class="center"
+											<img src=${intake.food.imgPath } class="center"
 												id="prodImg0">
 											<div class="overlay-top"></div>
 											<div class="overlay-bottom">
 												<div class="links">
 													<a class="btn btn-gray-transparent btn-animated btn-sm"
-														id="info0" href="${path}/foods/detail?code=${intake.code }">상품
+														id="info0" href="${path}/foods/detail?code=${intake.food.code }">상품
 														정보로 이동 <i class="+pl-10 fa fa-arrow-right"></i>
 													</a>
 												</div>
@@ -167,18 +167,18 @@
 								</div>
 							</div>
 						</td>
-						<td class="tableval">${intake.intakedate }</td>
+						<td class="tableval">${intake.intakeDate }</td>
 						<td class="tableval">
 							<input type="number" name="quantity" style="width: 30%" placeholder="${intake.quantity }" /><br/>
-							<input type="hidden" name="code" class="form-control" style="width: 30%" value="${intake.code }"/>
+							<input type="hidden" name="code" class="form-control" style="width: 30%" value="${intake.food.code }"/>
 							<input type="hidden" name="id" class="form-control" style="width: 30%" value="${loginid }"/>
-							<input type="hidden" name="intakecode" class="form-control" style="width: 30%" value="${intake.intakecode }"/>
-							<button class="btn btn-info" type="submit" onclick="updatebtn(${intake.code })">
+							<input type="hidden" name="intakecode" class="form-control" style="width: 30%" value="${intake.code }"/>
+							<button class="btn btn-info" type="submit" onclick="updatebtn(${intake.food.code })">
 								<b>수 정</b>
 							</button>
 						</td>
 						<td class="tableval">
-							<button class="btn btn-info" type="button" onclick="deletebtn(${intake.intakecode})">
+							<button class="btn btn-info" type="button" onclick="deletebtn(${intake.code})">
 								<b>삭 제</b>
 							</button>
 						</td>
