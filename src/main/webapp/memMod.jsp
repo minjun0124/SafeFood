@@ -27,7 +27,7 @@ body {
 		<div align="center">
 			<h1>${msg_psearch }</h1>
 		</div>
-		<form method="post" id="modform" action="${path}/update" role="form"
+		<form method="post" id="modform" action="${path}/users/update" role="form"
 			class="form-horizontal">
 			<%-- <div class="form-group">
 				<label class="control-label col-md-3">고객님의 아이디 *: <%=sess_id%></label>

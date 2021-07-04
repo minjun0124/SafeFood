@@ -41,6 +41,14 @@ public class IntakeController {
         return "foodview";
     }
 
+    @GetMapping("/cart")
+    private String intakeCart(Model model, IntakeDto intakeDto) {
+        intakeService.cartIntake(intakeDto);
+        model.addAttribute("food", foodService.findByCode(intakeDto.getCode()));
+        return "redirect:/carts";
+    }
+
+    //TODO: search option
     @GetMapping
     private String intakeList(Model model, HttpServletRequest request, @ModelAttribute("pagebean") PageBean pagebean) {
         String id = (String) request.getSession().getAttribute("loginid");

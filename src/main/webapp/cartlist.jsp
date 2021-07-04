@@ -51,7 +51,7 @@
 	}
 	function intakebtn(code){
 		var frm = document.getElementById("upcart"+code);
-		frm.action="${path}/intakes/insert";
+		frm.action="${path}/intakes/cart";
 		frm.submit();
 	}
 	function deletebtn(code){

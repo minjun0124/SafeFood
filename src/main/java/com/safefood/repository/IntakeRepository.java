@@ -1,16 +1,10 @@
 package com.safefood.repository;
 
-import com.safefood.model.domain.Food;
 import com.safefood.model.domain.Intake;
-import com.safefood.model.domain.PageBean;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.time.LocalDateTime;
-import java.time.Year;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -41,6 +35,7 @@ public class IntakeRepository {
         em.remove(intake);
     }
 
+    //TODO: search option
     public List<Integer> findOptionCode(String userId) {
         return em.createQuery("select distinct i.food.code from Intake i join i.food " +
                 "where i.user.id = :userId ", Integer.class)

@@ -3,6 +3,7 @@ package com.safefood.service;
 import com.safefood.dto.FoodDto;
 import com.safefood.dto.IntakeDto;
 import com.safefood.model.domain.*;
+import com.safefood.repository.CartRepository;
 import com.safefood.repository.FoodRepository;
 import com.safefood.repository.IntakeRepository;
 import com.safefood.repository.UserRepository;
@@ -22,10 +23,10 @@ public class IntakeService {
 
     @Autowired
     IntakeRepository intakeRepository;
-
+    @Autowired
+    CartRepository cartRepository;
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     FoodRepository foodRepository;
 
@@ -103,6 +104,7 @@ public class IntakeService {
         return foodDto;
     }
 
+    //TODO: search option
     public List<Integer> searchOption(String id, String key) {
         /*if (key.equals("code")){
             return intakeRepository.findOptionCode(id);
@@ -123,6 +125,19 @@ public class IntakeService {
     @Transactional
     public void deleteIntake(int intakeCode) {
         intakeRepository.deleteIntake(intakeCode);
+    }
+
+    @Transactional
+    public void cartIntake(IntakeDto intakeDto) {
+        insertIntake(intakeDto);
+        CartId cartId = new CartId(intakeDto.getId(), intakeDto.getCode());
+        Cart cart = cartRepository.findByCodes(cartId);
+        int changQuantity = cart.getQuantity() - intakeDto.getQuantity();
+        if (changQuantity <= 0){
+            cartRepository.deleteCart(cart);
+        } else {
+            cart.changeQuantity(changQuantity);
+        }
     }
 
 /*
