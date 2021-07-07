@@ -43,18 +43,6 @@ public class User {
     @Column(nullable = false, columnDefinition = "tinyint default 1")
     private int isAdmin;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Cart> carts = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Intake> intakes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Notice> notices = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private List<Question> questions = new ArrayList<>();
-
     public User(String userId, String pw, String name, String address, String phone) {
         this.id = userId;
         this.password = pw;

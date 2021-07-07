@@ -42,12 +42,6 @@ public class Food {
     private String allergy;
     private int searchCnt;
 
-    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
-    private List<Intake> intakes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "food", cascade = CascadeType.REMOVE)
-    private List<Cart> carts = new ArrayList<>();
-
     public void setMaterial(String material) {
         this.material = material;
         setAllergy();
