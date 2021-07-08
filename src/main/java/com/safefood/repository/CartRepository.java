@@ -36,7 +36,7 @@ public class CartRepository {
     }
 
     public List<Cart> joinFood(String userId) {
-        return em.createQuery("select c from Cart c join fetch Food f on c.cartId.foodCode = f.code and c.cartId.userId = :id", Cart.class)
+        return em.createQuery("select c from Cart c join fetch c.food where c.cartId.userId = :id", Cart.class)
                 .setParameter("id", userId)
                 .getResultList();
     }
