@@ -54,15 +54,6 @@ public class CartController {
         return "redirect:/carts";
     }
 
-    @GetMapping("/cartintake.do")
-    private String cartIntake(Model model, Intake intake, Cart cart, HttpServletRequest request) {
-        session = request.getSession();
-        String id = (String) session.getAttribute("loginid");
-        cartService.intakeCart(cart, intake);
-        model.addAttribute("list", cartService.findCartList(id));
-        return "redirect:cartlist.do";
-    }
-
     @GetMapping("/delete")
     private String cartDelete(CartDto cartDto) {
         cartService.deleteCart(cartDto);
