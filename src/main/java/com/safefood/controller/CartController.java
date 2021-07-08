@@ -43,7 +43,7 @@ public class CartController {
     private String cartList(Model model, HttpServletRequest request) {
         session = request.getSession();
         String id = (String) session.getAttribute("loginid");
-        List<Cart> cartList = cartService.findCartList(id);
+        List<Cart> cartList = cartService.joinFood(id);
         model.addAttribute("list", cartList);
         return "cartlist";
     }

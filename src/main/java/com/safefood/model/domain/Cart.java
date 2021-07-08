@@ -21,7 +21,7 @@ public class Cart {
     private User user;
 
     @MapsId("foodCode")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "food_code")
     private Food food;
 

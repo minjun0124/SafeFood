@@ -65,8 +65,7 @@ public class CartService {
 //        intakeDaoImpl.insertIntake(intake);
     }
 
-    public List<Food> joinfood(CartId cartId) {
-        return cartRepository.joinFood(cartId);
+    public List<Cart> joinFood(String userId) {
+        return cartRepository.joinFood(userId);
     }
-
 }
