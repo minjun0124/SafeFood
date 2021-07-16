@@ -38,7 +38,7 @@ public class IntakeService {
 
     public Intake makeIntake(IntakeDto intakeDto) {
         User user = userRepository.findById(intakeDto.getId());
-        Food food = foodRepository.findByCode(intakeDto.getCode());
+        Food food = foodRepository.findById(intakeDto.getCode()).get();
         return new Intake(user, food, intakeDto.getQuantity(), LocalDateTime.now());
     }
 
@@ -105,7 +105,7 @@ public class IntakeService {
     }
 
     //TODO: search option
-    public List<Integer> searchOption(String id, String key) {
+    public List<Long> searchOption(String id, String key) {
         /*if (key.equals("code")){
             return intakeRepository.findOptionCode(id);
         } else if (key.equals("year")) {

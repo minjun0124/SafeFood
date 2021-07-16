@@ -42,7 +42,7 @@ public class FoodController {
     }
 
     @GetMapping("/detail")
-    private String foodView(Model model, int code) {
+    private String foodView(Model model, Long code) {
         foodService.searchCount(code);
         model.addAttribute("food", foodService.findByCode(code));
         return "foodview";

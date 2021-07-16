@@ -36,9 +36,9 @@ public class IntakeRepository {
     }
 
     //TODO: search option
-    public List<Integer> findOptionCode(String userId) {
+    public List<Long> findOptionCode(String userId) {
         return em.createQuery("select distinct i.food.code from Intake i join i.food " +
-                "where i.user.id = :userId ", Integer.class)
+                "where i.user.id = :userId ", Long.class)
                 .setParameter("userId", userId)
                 .getResultList();
     }

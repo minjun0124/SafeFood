@@ -62,7 +62,7 @@ public class IntakeController {
         String key = null;
 
         key = "code";
-        List<Integer> codes = intakeService.searchOption(id, key);
+        List<Long> codes = intakeService.searchOption(id, key);
 //        key = "year";
 //        List<Integer> years = intakeService.searchOption(id, key);
 //        key = "month";

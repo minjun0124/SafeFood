@@ -30,7 +30,7 @@ public class FoodSAXHandler extends DefaultHandler {
 
 	public void endElement(String uri, String localName, String qName) {
 		if (qName.equals("code")) {
-			food.setCode(Integer.parseInt(temp));
+			food.setCode(Long.parseLong(temp));
 		} else if (qName.equals("name")) {
 			food.setName(temp);
 		} else if (qName.equals("maker")) {

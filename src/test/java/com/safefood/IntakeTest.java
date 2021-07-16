@@ -35,7 +35,7 @@ public class IntakeTest {
     public void 섭취(){
         // given
         User user = userRegister();
-        IntakeDto intakeDto = new IntakeDto(user.getId(), 12, 6);
+        IntakeDto intakeDto = new IntakeDto(user.getId(), 12L, 6);
 
         // when
         intakeService.insertIntake(intakeDto);

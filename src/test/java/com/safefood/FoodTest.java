@@ -30,7 +30,7 @@ public class FoodTest {
         foodService.loadData();
 
         // when
-        Optional<Food> opFood = Optional.ofNullable(foodService.findByCode(1));
+        Optional<Food> opFood = Optional.ofNullable(foodService.findByCode(1L));
 
         // then
         if (opFood.isEmpty()) {

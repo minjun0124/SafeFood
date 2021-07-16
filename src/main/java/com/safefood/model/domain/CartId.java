@@ -15,7 +15,7 @@ public class CartId implements Serializable {
     @Column(name = "user_id")
     private String userId;
     @Column(name = "food_code")
-    private int foodCode;
+    private Long foodCode;
 
     @Override
     public boolean equals(Object o) {

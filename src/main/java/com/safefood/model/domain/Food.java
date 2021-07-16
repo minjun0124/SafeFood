@@ -15,10 +15,10 @@ public class Food {
 
     @Id
     @Column(name = "food_code")
-    private int code;
+    private Long code;
     private String name;
 
-    public Food(int code, String name, String imgPath, Long searchCnt) {
+    public Food(Long code, String name, String imgPath, Long searchCnt) {
         this.code = code;
         this.name = name;
         this.imgPath = imgPath;

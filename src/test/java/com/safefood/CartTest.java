@@ -35,7 +35,7 @@ public class CartTest {
     public void 찜하기() {
         // given
         User user = userRegister();
-        int foodCode = 10;
+        Long foodCode = 10L;
         int quantity = 6;
         CartDto cartDto = new CartDto(user.getId(), foodCode, quantity);
         CartId cartId = new CartId(user.getId(), foodCode);
@@ -54,7 +54,7 @@ public class CartTest {
     public void 찜하기_수량_변경() {
         // given
         User user = userRegister();
-        int foodCode = 10;
+        Long foodCode = 10L;
         int quantity = 6;
         CartDto cartDto = new CartDto(user.getId(), foodCode, quantity);
         CartId cartId = new CartId(user.getId(), foodCode);
