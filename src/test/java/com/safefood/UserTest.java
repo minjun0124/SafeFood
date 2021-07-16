@@ -37,10 +37,10 @@ public class UserTest {
         User user = new User("test", "test", "test", "seoul", "01012341234");
 
         //when
-        String savedId = userRepository.save(user);
+        userRepository.save(user);
 
         //then
-        assertEquals(user, userRepository.findById(savedId));
+        assertEquals(user, userRepository.findById("test"));
     }
 
     @Test
@@ -125,15 +125,14 @@ public class UserTest {
         //given
         Address address = new Address("seoul", "safe load", "1234");
         User user = new User("test", "test", "test", "seoul", "01012341234");
-        String savedId = userRepository.save(user);
-        assertEquals(user, userRepository.findById(savedId));
+        userRepository.save(user);
 
         //when
         userService.withdrawUser("test");
 
         //then
         if (userService.loginPass("test", "test")) {
-            fail("회원 탈퇴 처리에 실패하였습니다.");
+            fail("탈퇴된 회원입니다.");
         }
     }
 

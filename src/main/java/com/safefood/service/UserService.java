@@ -21,7 +21,6 @@ public class UserService {
 
     @Transactional
     public String join(User user) {
-        validateDuplicateUser(user);
         userRepository.save(user);
         return user.getId();
     }
@@ -34,7 +33,7 @@ public class UserService {
     }
 
     public User findById(String userId) {
-        return userRepository.findById(userId);
+        return userRepository.findById(userId).get();
     }
 
     public List<User> findUsers() {

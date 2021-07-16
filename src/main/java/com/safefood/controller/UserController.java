@@ -35,7 +35,7 @@ public class UserController {
             e.printStackTrace();
             model.addAttribute("msg", "회원 저장에 실패했습니다.");
         }
-        return "redirect:/index";
+        return "index";
     }
 
     @PostMapping("/login")

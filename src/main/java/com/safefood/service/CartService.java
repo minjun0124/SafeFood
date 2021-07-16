@@ -35,7 +35,7 @@ public class CartService {
     }
 
     public Cart makeCartByCartId(CartId cartId, int quantity){
-        User user = userRepository.findById(cartId.getUserId());
+        User user = userRepository.findById(cartId.getUserId()).get();
         Food food = foodRepository.findById(cartId.getFoodCode()).get();
         return new Cart(cartId, user, food, quantity);
     }

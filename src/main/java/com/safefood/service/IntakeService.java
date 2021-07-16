@@ -37,7 +37,7 @@ public class IntakeService {
     }
 
     public Intake makeIntake(IntakeDto intakeDto) {
-        User user = userRepository.findById(intakeDto.getId());
+        User user = userRepository.findById(intakeDto.getId()).get();
         Food food = foodRepository.findById(intakeDto.getCode()).get();
         return new Intake(user, food, intakeDto.getQuantity(), LocalDateTime.now());
     }
