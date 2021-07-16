@@ -118,13 +118,16 @@ public class IntakeService {
 
     @Transactional
     public void updateIntake(Intake intake) {
-        Intake findIntake = intakeRepository.findOne(intake.getCode());
+        Intake findIntake = intakeRepository.findById(intake.getCode()).get();
         findIntake.setQuantity(intake.getQuantity());
     }
 
     @Transactional
-    public void deleteIntake(int intakeCode) {
-        intakeRepository.deleteIntake(intakeCode);
+    public void deleteIntake(Long intakeCode) {
+        Optional<Intake> intake = intakeRepository.findById(intakeCode);
+        if (intake.isPresent()){
+            intakeRepository.delete(intake.get());
+        }
     }
 
     @Transactional

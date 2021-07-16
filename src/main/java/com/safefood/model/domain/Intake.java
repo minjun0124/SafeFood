@@ -18,7 +18,7 @@ public class Intake {
     @GeneratedValue
     @Column(name = "intake_code")
     @NonNull
-    private int code;
+    private Long code;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

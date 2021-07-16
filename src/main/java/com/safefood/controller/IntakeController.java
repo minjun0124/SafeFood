@@ -83,7 +83,7 @@ public class IntakeController {
     }
 
     @GetMapping("/delete")
-    private String intakeDelete(int intakeCode) {
+    private String intakeDelete(Long intakeCode) {
         intakeService.deleteIntake(intakeCode);
         log.info(String.valueOf(intakeCode));
 

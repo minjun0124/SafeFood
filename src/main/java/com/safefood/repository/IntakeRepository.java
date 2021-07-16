@@ -1,56 +1,19 @@
 package com.safefood.repository;
 
 import com.safefood.model.domain.Intake;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class IntakeRepository {
+public interface IntakeRepository extends JpaRepository<Intake, Long> {
 
-    private final EntityManager em;
-
-    public int save(Intake intake) {
-        em.persist(intake);
-        return intake.getCode();
-    }
-
-    public Intake findOne(int intakecode) {
-        return em.find(Intake.class, intakecode);
-    }
-
-    public List<Intake> findByUserId(String userId) {
-        return em.createQuery("select i from Intake i " +
-                "join fetch i.food " +
-                "where i.user.id = :userId order by i.intakeDate")
-                .setParameter("userId", userId)
-                .getResultList();
-    }
-
-    public void deleteIntake(int intakecode) {
-        Intake intake = em.find(Intake.class, intakecode);
-        em.remove(intake);
-    }
+    @Query("select i from Intake i join fetch i.food where i.user.id = :userId order by i.intakeDate")
+    List<Intake> findByUserId(@Param("userId") String userId);
 
     //TODO: search option
-    public List<Long> findOptionCode(String userId) {
-        return em.createQuery("select distinct i.food.code from Intake i join i.food " +
-                "where i.user.id = :userId ", Long.class)
-                .setParameter("userId", userId)
-                .getResultList();
-    }
-/*
-    public List<Object> findOptionYears(String id) {
-        return em.createNativeQuery("select distinct YEAR(i.intake_date) from Intake i", Object.class)
-                .getResultList();
-    }
+    @Query("select distinct i.food.code from Intake i join i.food where i.user.id = :userId")
+    List<Long> findOptionCode(@Param("userId") String userId);
 
-    public List<Integer> findOptionMonths(String id) {
-        return em.createNativeQuery("select distinct MONTH(i.intakeDate) from Intake i", LocalDateTime.class)
-                .getResultList();
-    }
-*/
 }
