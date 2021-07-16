@@ -131,10 +131,10 @@ public class IntakeService {
     public void cartIntake(IntakeDto intakeDto) {
         insertIntake(intakeDto);
         CartId cartId = new CartId(intakeDto.getId(), intakeDto.getCode());
-        Cart cart = cartRepository.findByCodes(cartId);
+        Cart cart = cartRepository.findById(cartId).get();
         int changQuantity = cart.getQuantity() - intakeDto.getQuantity();
         if (changQuantity <= 0){
-            cartRepository.deleteCart(cart);
+            cartRepository.delete(cart);
         } else {
             cart.changeQuantity(changQuantity);
         }

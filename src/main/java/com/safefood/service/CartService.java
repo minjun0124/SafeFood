@@ -23,10 +23,10 @@ public class CartService {
 
     public void insertCart(CartDto cartDto) {
         CartId cartId = new CartId(cartDto.getId(), cartDto.getCode());
-        Optional<Cart> opCart = Optional.ofNullable(cartRepository.findByCodes(cartId));
+        Optional<Cart> opCart = cartRepository.findById(cartId);
         if (opCart.isEmpty()) {
             Cart cart = makeCartByCartId(cartId, cartDto.getQuantity());
-            cartRepository.insertCart(cart);
+            cartRepository.save(cart);
         } else {
             Cart findCart = opCart.get();
             int newQuantity = findCart.getQuantity() + cartDto.getQuantity();
@@ -42,18 +42,18 @@ public class CartService {
 
     public void changeCartQuantity(CartDto cartDto) {
         CartId cartId = new CartId(cartDto.getId(), cartDto.getCode());
-        Cart cart = cartRepository.findByCodes(cartId);
+        Cart cart = cartRepository.findById(cartId).get();
         cart.changeQuantity(cartDto.getQuantity());
     }
 
     public void deleteCart(CartDto cartDto) {
         CartId cartId = new CartId(cartDto.getId(), cartDto.getCode());
         Cart cart = findCart(cartId);
-        cartRepository.deleteCart(cart);
+        cartRepository.delete(cart);
     }
 
     public Cart findCart(CartId cartId) {
-        return cartRepository.findByCodes(cartId);
+        return cartRepository.findById(cartId).get();
     }
 
     public List<Cart> findCartList(String userId) {
@@ -61,11 +61,11 @@ public class CartService {
     }
 
     public void intakeCart(Cart cart, Intake intake) {
-        cartRepository.deleteCart(cart);
+        cartRepository.delete(cart);
 //        intakeDaoImpl.insertIntake(intake);
     }
 
     public List<Cart> joinFood(String userId) {
-        return cartRepository.joinFood(userId);
+        return cartRepository.findCartJoinFood(userId);
     }
 }

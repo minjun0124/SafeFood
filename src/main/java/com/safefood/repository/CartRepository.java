@@ -1,44 +1,18 @@
 package com.safefood.repository;
 
-import com.safefood.dto.CartDto;
 import com.safefood.model.domain.Cart;
 import com.safefood.model.domain.CartId;
-import com.safefood.model.domain.Food;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class CartRepository {
+public interface CartRepository extends JpaRepository<Cart, CartId> {
 
-    private final EntityManager em;
+    @Query("select c from Cart c where c.cartId.userId = :id")
+    List<Cart> findByUserId(@Param("id") String userId);
 
-    public void insertCart(Cart cart) {
-        em.persist(cart);
-    }
-
-    public void deleteCart(Cart cart) {
-        em.remove(cart);
-    }
-
-    public Cart findByCodes(CartId cartId) {
-        return em.find(Cart.class, cartId);
-    }
-
-    public List<Cart> findByUserId(String userId) {
-        return em.createQuery("select c from Cart c " +
-                "where c.cartId.userId = :id", Cart.class)
-                .setParameter("id", userId)
-                .getResultList();
-    }
-
-    public List<Cart> joinFood(String userId) {
-        return em.createQuery("select c from Cart c join fetch c.food where c.cartId.userId = :id", Cart.class)
-                .setParameter("id", userId)
-                .getResultList();
-    }
-
+    @Query("select c from Cart c join fetch c.food where c.cartId.userId = :id")
+    List<Cart> findCartJoinFood(@Param("id") String userId);
 }
