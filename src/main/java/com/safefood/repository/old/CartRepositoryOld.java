@@ -1,9 +1,7 @@
-package com.safefood.repository;
+package com.safefood.repository.old;
 
-import com.safefood.dto.CartDto;
 import com.safefood.model.domain.Cart;
 import com.safefood.model.domain.CartId;
-import com.safefood.model.domain.Food;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

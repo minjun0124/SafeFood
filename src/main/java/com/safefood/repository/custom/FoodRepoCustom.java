@@ -1,4 +1,4 @@
-package com.safefood.repository;
+package com.safefood.repository.custom;
 
 import com.safefood.model.domain.Food;
 

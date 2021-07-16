@@ -1,4 +1,4 @@
-package com.safefood.repository;
+package com.safefood.repository.old;
 
 import com.safefood.model.domain.User;
 import lombok.RequiredArgsConstructor;
