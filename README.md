@@ -54,12 +54,12 @@ ___
 ---
 <img src="/img/WebPage/01_메인페이지.png" width="1000px" height="800px" title="MainPage" alt="MainPage"></img>
 <br>
-<center> < 메인페이지 ></center> 
+<center>< 메인페이지 ></center> 
 <br>
 <br>
 <img src="/img/WebPage/07_상품_알러지1.PNG" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
 <br>
-<center> < 알러지 해당 상품 선택 > </center> 
+<center>< 알러지 해당 상품 선택 ></center> 
 <br>
 <br>
 [이미지 더 보기][https://github.com/minjun0124/SafeFood/tree/main/img/WebPage]
