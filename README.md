@@ -53,7 +53,7 @@ Web Page
 <br>
 < 메인페이지 >
 <br>
-<img src="/img/WebPage/07_상품_알러지.png" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
+<img src="/img/WebPage/07_상품_알러지1.png" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
 <br>
 < 알러지 해당 상품 선택 >
 <br>
@@ -64,6 +64,9 @@ Web Page
 <br>
 
 # Discussion
+
+<h3>프로젝트 수행 중 느낀 점, 기술적인 내용 정리</h3>
+<br>
 
 Entity Class
 ---
@@ -149,6 +152,8 @@ Common
 <br>
 
 # Issue note
+<h3>프로젝트 중 발생한 주요 이슈 및 해결 과정</h3>
+<br>
 
 org.hibernate.propertyAccessException: could not set field value by reflection 발생
 ---
