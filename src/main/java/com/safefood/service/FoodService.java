@@ -45,7 +45,6 @@ public class FoodService {
     public List<Food> findFoods(PageBean pageBean) {
         int total = Long.valueOf(foodRepository.count()).intValue();
         PageUtility bar = new PageUtility(pageBean.getInterval(), total, pageBean.getPageNo(), "images/");
-        System.out.println("FoodService.findFoods" + "total:" + total);
         pageBean.setPagelink(bar.getPageBar());
         PageRequest pageRequest = PageRequest.of(pageBean.getPageNo(), pageBean.getInterval(), Sort.by(Sort.Direction.DESC, "code"));
         return foodRepository.findAll(pageRequest).getContent();
