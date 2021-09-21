@@ -32,4 +32,4 @@ ___
 ERD
 ---
 ___
-<img src="/img/DB_ERD.jpg" width="450px" height="300px" title="DB_ERD" alt="DB_ERD"></img><br/>
+<img src="/img/DB_ERD.png" width="450px" height="300px" title="DB_ERD" alt="DB_ERD"></img><br/>
