@@ -1,34 +1,37 @@
-# SafeFood
+# 🌿SafeFood
 
 본 프로젝트는 SSR에서 RESTful, CSR 을 거쳐 MSA 순서로 전환하며 아키텍처 및 스프링 프로젝트 학습을 목적으로 합니다.
 
-<h3>관련 저장소</h3>
+<h3>🗂관련 저장소</h3>
 
-- SafeFood (SafeFood Version.1) [Link][https://github.com/minjun0124/SafeFood]
+- SafeFood (SafeFood Version.1)
 	- SSR, JPA 적용
-- Nutrition-Designer (SafeFood Version.2) [Link][https://github.com/minjun0124/NUDE]
+    - Link : https://github.com/minjun0124/SafeFood (현재 위치)
+- Nutrition-Designer (SafeFood Version.2)
 	- CSR, RESTful 적용
-- Nutrition-Designer-MSA (SafeFood Version.3) [Link][https://github.com/minjun0124/nude-msa]
+    - Link : https://github.com/minjun0124/NUDE
+- Nutrition-Designer-MSA (SafeFood Version.3)
 	- MSA 전환
+    - Link : https://github.com/minjun0124/nude-msa
 ___
 
 <br>
 
-프로젝트 기획 배경 및 목표
+💻프로젝트 기획 배경 및 목표
 ---
 - 사용자의 알러지 정보를 기반으로 안전한 식품을 섭취할 수 있도록 정보를 제공한다.
 - 섭취한 영양소를 기반으로 부족한 영양소를 채울 수 있는 식품을 추천한다.
 
 <br>
 
-학습 목표
+✏학습 목표
 ---
 - Spring Framework에 대해 다시 학습한다.
 - MyBatis를 적용하여 SQL 중심이었던 이전 프로젝트에 JPA를 적용하고 객체 지향적인 설계를 지향한다.
 
 <br>
 
-개발 환경
+🛠개발 환경
 ---
 - Java 11
 - SpringBoot 2.5.1
@@ -39,7 +42,7 @@ ___
 
 <br>
 
-ERD
+📃ERD
 ---
 <img src="/img/DB_ERD/DB_ERD.png" width="1000px" height="765px" title="DB_ERD" alt="DB_ERD"></img><br/>
 <br>
@@ -47,13 +50,13 @@ ERD
 
 <br>
 
-Web Page
+🖥Web Page
 ---
 <img src="/img/WebPage/01_메인페이지.png" width="1000px" height="800px" title="MainPage" alt="MainPage"></img>
 <br>
 < 메인페이지 >
 <br>
-<img src="/img/WebPage/07_상품_알러지1.png" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
+<img src="/img/WebPage/07_상품_알러지1.PNG" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
 <br>
 < 알러지 해당 상품 선택 >
 <br>
@@ -63,7 +66,7 @@ Web Page
 <br>
 <br>
 
-# Discussion
+# 💡Discussion
 
 <h3>프로젝트 수행 중 느낀 점, 기술적인 내용 정리</h3>
 <br>
@@ -151,7 +154,7 @@ Common
 <br>
 <br>
 
-# Issue note
+# 👾Issue note
 <h3>프로젝트 중 발생한 주요 이슈 및 해결 과정</h3>
 <br>
 
