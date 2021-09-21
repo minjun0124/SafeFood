@@ -54,11 +54,12 @@ ___
 ---
 <img src="/img/WebPage/01_메인페이지.png" width="1000px" height="800px" title="MainPage" alt="MainPage"></img>
 <br>
-< 메인페이지 >
+<center> < 메인페이지 ></center> 
+<br>
 <br>
 <img src="/img/WebPage/07_상품_알러지1.PNG" width="1000px" height="800px" title="ItemAllergy01" alt="ItemAllergy01"></img>
 <br>
-< 알러지 해당 상품 선택 >
+<center> < 알러지 해당 상품 선택 > </center> 
 <br>
 <br>
 [이미지 더 보기][https://github.com/minjun0124/SafeFood/tree/main/img/WebPage]
@@ -71,7 +72,7 @@ ___
 <h3>프로젝트 수행 중 느낀 점, 기술적인 내용 정리</h3>
 <br>
 
-Entity Class
+[ 01. Entity Class ]
 ---
 - 최대한 외부에서 Entity 클래스의 getter method를 사용하지 않도록 해당 클래스 안에서 필요한 로직 method을 구현한다.
     - 단, Domain Logic만 가지고 있어야 하며 Presentation Logic을 가지고 있어서는 안된다.
@@ -89,7 +90,7 @@ Entity Class
 
 <br>
 
-JPA
+[ 02. JPA ]
 ---
 - Delete Logic
     - CASCADE 옵션, OrphanRemoval 적용
@@ -127,7 +128,7 @@ JPA
 
 <br>
 
-API 접근 
+[ 03. API 접근 ]
 ---
 - getMapping 으로 정보를 변경할 수 있게 되면 url만으로도 table에 접근하여 정보를 변경할 수 있게 된다.</br>
     ex) http://localhost:8080/carts/insert?intakecode=0&code=20&id=test&quantity=1
@@ -135,7 +136,7 @@ API 접근
 
 <br>
 
-Common
+[ 04. Common ]
 ---
 - 객체의 null check 는 != null 의 형태가 아닌 Optional 객체를 사용해서 판단하면 NPE 로부터 안전하다.
 
@@ -158,7 +159,7 @@ Common
 <h3>프로젝트 중 발생한 주요 이슈 및 해결 과정</h3>
 <br>
 
-org.hibernate.propertyAccessException: could not set field value by reflection 발생
+[ 01. org.hibernate.propertyAccessException: could not set field value by reflection ]
 ---
 - 해결 : em.persist(cart) 하는 과정에서 Food, User, Quantity 등 다 세팅해주었으나 복합키인 CartId 를 set 해주지 않았다.
 - 연관 관계 맵핑이 있기 때문에 새로운 Cart를 만들때 Food, User 객체를 찾아서 입력을 해주어야 insert가 된다.
@@ -167,7 +168,7 @@ org.hibernate.propertyAccessException: could not set field value by reflection �
 
 <br>
 
-N+1 Problem
+[ 02. N+1 Problem ]
 ---
 - org.hibernate.LazyInitializationException - could not initialize proxy - no Session 발생
     
@@ -195,7 +196,7 @@ N+1 Problem
 
 <br>
 
-JPA : Entity 직접 노출 & toString 호출
+[ 03. JPA : Entity 직접 노출 & toString 호출 ]
 ---
 - 엔티티를 직접 노출할 때는 양방향 연관관계가 걸린 곳은 꼭 한 곳을 @JsonIgnore 처리 해야 한다.
 - 양쪽을 서로 호출하며 무한 루프가 발생하고 Stackoverflow의 원인이 된다.
@@ -203,7 +204,7 @@ JPA : Entity 직접 노출 & toString 호출
 
 <br>
 
-JSP
+[ 04. JSP ]
 ---
 - 경로를 상대 경로로 요청하여 현재 경로 대비로 이동하기 때문에 request url에 문제가 발생한다.
     - <c:set var="path" value="<%=request.getContextPath()%>" scope="application"/> 와 같이 path variable에 root path 를 설정
