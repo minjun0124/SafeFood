@@ -4,9 +4,9 @@
 
 <h3>🗂관련 저장소</h3>
 
-- SafeFood (SafeFood Version.1)
+- SafeFood (SafeFood Version.1) ---- (현재 위치)
 	- SSR, JPA 적용
-    - Link : https://github.com/minjun0124/SafeFood (현재 위치)
+    - Link : https://github.com/minjun0124/SafeFood
 - Nutrition-Designer (SafeFood Version.2)
 	- CSR, RESTful 적용
     - Link : https://github.com/minjun0124/NUDE
